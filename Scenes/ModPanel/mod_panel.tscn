@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://clnuxvf3lyana"]
+[gd_scene load_steps=4 format=3 uid="uid://clnuxvf3lyana"]
 
-[ext_resource type="Script" path="res://Scenes/MainScene/mod_panel.gd" id="1_rxirq"]
+[ext_resource type="Script" path="res://Scenes/ModPanel/mod_panel.gd" id="1_7qdrt"]
+[ext_resource type="Script" path="res://Scenes/ModPanel/CheckBoxHitbox.gd" id="2_rl0ur"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o12b3"]
 bg_color = Color(1, 1, 1, 1)
@@ -14,7 +15,7 @@ anchor_right = 1.0
 grow_horizontal = 2
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_o12b3")
-script = ExtResource("1_rxirq")
+script = ExtResource("1_7qdrt")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -51,3 +52,38 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 text = "Hello"
 autowrap_mode = 0
+
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/HBoxContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+script = ExtResource("2_rl0ur")
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/HBoxContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+focus_mode = 0
+mouse_filter = 2
+button_pressed = true
+alignment = 1
+icon_alignment = 1
+
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/Control" to="MarginContainer/HBoxContainer/Control" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/Control" to="MarginContainer/HBoxContainer/Control" method="_on_mouse_exited"]

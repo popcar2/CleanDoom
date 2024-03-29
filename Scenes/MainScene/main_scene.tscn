@@ -54,37 +54,8 @@ grow_vertical = 2
 theme = SubResource("Theme_5w21q")
 script = ExtResource("2_7s6wy")
 
-[node name="AddModButton" type="Button" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -84.0
-offset_top = -155.0
-offset_right = -43.0
-offset_bottom = -100.0
-grow_horizontal = 0
-grow_vertical = 0
-focus_mode = 0
-text = "+"
-script = ExtResource("3_pdnw3")
-
-[node name="FileDialog" type="FileDialog" parent="AddModButton"]
-auto_translate_mode = 1
-title = "Open File(s)"
-initial_position = 2
-size = Vector2i(350, 200)
-always_on_top = true
-ok_button_text = "Open"
-file_mode = 1
-access = 2
-filters = PackedStringArray("*.wad,*.pk3; Doom Wad")
-use_native_dialog = true
-
 [node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -95,6 +66,39 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20
+
+[node name="Control" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="AddModButton" type="Button" parent="MarginContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -5.0
+offset_right = -23.0
+offset_bottom = 50.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+text = "+"
+script = ExtResource("3_pdnw3")
+
+[node name="FileDialog" type="FileDialog" parent="MarginContainer/Control/AddModButton"]
+auto_translate_mode = 1
+title = "Open File(s)"
+initial_position = 2
+size = Vector2i(350, 200)
+always_on_top = true
+ok_button_text = "Open"
+file_mode = 1
+access = 2
+filters = PackedStringArray("*.wad,*.pk3; Doom Wad")
+use_native_dialog = true
 
 [node name="PanelBorder" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -137,6 +141,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_t2ae6")
 theme_override_styles/normal = SubResource("StyleBoxFlat_j1gfv")
 text = "Start Game"
 
-[connection signal="pressed" from="AddModButton" to="AddModButton" method="_on_pressed"]
-[connection signal="files_selected" from="AddModButton/FileDialog" to="AddModButton" method="_on_files_selected"]
+[connection signal="pressed" from="MarginContainer/Control/AddModButton" to="MarginContainer/Control/AddModButton" method="_on_pressed"]
+[connection signal="files_selected" from="MarginContainer/Control/AddModButton/FileDialog" to="MarginContainer/Control/AddModButton" method="_on_files_selected"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

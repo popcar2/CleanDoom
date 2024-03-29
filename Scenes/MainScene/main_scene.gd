@@ -12,6 +12,8 @@ func start_game() -> void:
 	if %ModsVBoxContainer.get_children().size() > 0:
 		argument_strings.append("-file")
 		for mod_panel: Panel in %ModsVBoxContainer.get_children():
+			if !mod_panel.get_node("%CheckBox").button_pressed:
+				continue
 			argument_strings.append("%s" % mod_panel.get_node("%ModPathText").text)
 	
 	save_profile()
@@ -19,14 +21,17 @@ func start_game() -> void:
 
 func save_profile() -> void:
 	var wad_paths: Array[String] = []
+	var wads_enabled: Array[bool] = []
 	
 	for mod_panel in %ModsVBoxContainer.get_children():
 		wad_paths.append(mod_panel.get_node("%ModPathText").text)
+		wads_enabled.append(mod_panel.get_node("%CheckBox").button_pressed)
 	
 	var data: Dictionary = {
 		"default_exe": GlobalConfig.default_exe,
 		"default_iwad": GlobalConfig.default_iwad,
-		"wad_paths": wad_paths
+		"wad_paths": wad_paths,
+		"wads_enabled": wads_enabled
 	}
 	
 	var save_string: String = JSON.stringify(data)
@@ -57,3 +62,9 @@ func load_profile(profile_name: String = "Default") -> void:
 	GlobalConfig.default_exe = save_data.default_exe
 	GlobalConfig.default_iwad = save_data.default_iwad
 	%AddModButton._on_files_selected(save_data.wad_paths as PackedStringArray, false)
+	
+	for mod_panel: ModPanel in %ModsVBoxContainer.get_children():
+		mod_panel.get_node("%CheckBox").button_pressed = save_data.wads_enabled.pop_front()
+
+func _exit_tree() -> void:
+	save_profile()
