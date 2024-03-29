@@ -11,3 +11,11 @@ func _ready() -> void:
 		Engine.max_fps = 60
 	else:
 		Engine.max_fps = round(refresh_rate)
+	
+	var main_scene: MainScene = $"/root/MainScene"
+	if !DirAccess.dir_exists_absolute("user://Profiles/"):
+		DirAccess.make_dir_absolute("user://Profiles/")
+		main_scene.visible = false
+		main_scene.add_sibling.call_deferred(load("res://Scenes/Intro/Intro.tscn").instantiate())
+	else:
+		main_scene.load_profile()

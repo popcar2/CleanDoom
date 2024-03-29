@@ -31,23 +31,14 @@ corner_detail = 12
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjdc5"]
 bg_color = Color(1.34766e-06, 0.281037, 0.386997, 1)
 corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b32ow"]
 bg_color = Color(7.60466e-06, 0.559653, 0.753467, 1)
 corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2ae6"]
 bg_color = Color(1.58831e-06, 0.372635, 0.507479, 1)
 corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1gfv"]
 bg_color = Color(0, 0.454902, 0.615686, 1)
@@ -64,6 +55,7 @@ theme = SubResource("Theme_5w21q")
 script = ExtResource("2_7s6wy")
 
 [node name="AddModButton" type="Button" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -121,7 +113,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 0
+theme_override_constants/separation = 2
 
 [node name="StartButton" type="Button" parent="."]
 unique_name_in_owner = true
@@ -146,5 +138,5 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_j1gfv")
 text = "Start Game"
 
 [connection signal="pressed" from="AddModButton" to="AddModButton" method="_on_pressed"]
-[connection signal="files_selected" from="AddModButton/FileDialog" to="AddModButton" method="_on_file_dialog_files_selected"]
+[connection signal="files_selected" from="AddModButton/FileDialog" to="AddModButton" method="_on_files_selected"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

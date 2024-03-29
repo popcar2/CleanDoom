@@ -1,12 +1,20 @@
-[gd_scene format=3 uid="uid://clnuxvf3lyana"]
+[gd_scene load_steps=3 format=3 uid="uid://clnuxvf3lyana"]
+
+[ext_resource type="Script" path="res://Scenes/MainScene/mod_panel.gd" id="1_rxirq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o12b3"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="ModPanel" type="Panel"]
 auto_translate_mode = 1
+self_modulate = Color(0.819608, 0.0862745, 0.0862745, 1)
 custom_minimum_size = Vector2(0, 30)
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_o12b3")
+script = ExtResource("1_rxirq")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

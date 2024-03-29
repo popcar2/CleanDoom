@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="GoDoom Mod Launcher"
+config/name="CleanDoom Mod Launcher"
 run/main_scene="res://Scenes/MainScene/main_scene.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/low_processor_mode=true
