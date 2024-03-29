@@ -6,6 +6,7 @@ func _on_start_button_pressed() -> void:
 	%StartButton.text = "Have fun!"
 	await get_tree().create_timer(1).timeout
 	%StartButton.text = "Start Game"
+	get_tree().quit()
 
 func start_game() -> void:
 	var argument_strings: Array[String] = ["-iwad %s" % GlobalConfig.default_iwad]

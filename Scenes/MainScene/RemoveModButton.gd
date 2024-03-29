@@ -12,7 +12,7 @@ func _on_pressed() -> void:
 	await get_tree().process_frame
 	$"/root/MainScene".save_profile()
 
-func mods_box_updated(mod_panel: ModPanel):
+func mods_box_updated(_mod_panel: ModPanel):
 	await get_tree().process_frame
 	if %ModsVBoxContainer.get_child_count() == 0:
 		disabled = true

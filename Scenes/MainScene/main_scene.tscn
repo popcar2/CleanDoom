@@ -117,6 +117,7 @@ offset_bottom = 50.0
 grow_horizontal = 0
 grow_vertical = 0
 focus_mode = 0
+action_mode = 0
 text = "-"
 script = ExtResource("4_kahvs")
 
