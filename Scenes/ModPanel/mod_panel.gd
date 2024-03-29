@@ -45,6 +45,10 @@ func _input(event: InputEvent) -> void:
 		
 		elif event.button_index == 1 and event.is_released() and selected_panel == self:
 			is_grabbed = false
+	
+	if Input.is_action_just_pressed("delete"):
+		if selected_panel == self:
+			queue_free()
 
 func select_panel() -> void:
 	self_modulate = Color.DARK_CYAN
