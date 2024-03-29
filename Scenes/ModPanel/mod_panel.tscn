@@ -37,11 +37,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.25
+mouse_filter = 2
 text = "Hello"
 autowrap_mode = 0
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="ModPathText" type="RichTextLabel" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -50,20 +52,22 @@ custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+mouse_filter = 2
 text = "Hello"
 autowrap_mode = 0
 
 [node name="VSeparator2" type="VSeparator" parent="MarginContainer/HBoxContainer"]
 auto_translate_mode = 1
 layout_mode = 2
+mouse_filter = 2
 
-[node name="Control" type="Control" parent="MarginContainer/HBoxContainer"]
+[node name="CheckBoxHitbox" type="Control" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
 script = ExtResource("2_rl0ur")
 
-[node name="CheckBox" type="CheckBox" parent="MarginContainer/HBoxContainer/Control"]
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/HBoxContainer/CheckBoxHitbox"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -85,5 +89,8 @@ button_pressed = true
 alignment = 1
 icon_alignment = 1
 
-[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/Control" to="MarginContainer/HBoxContainer/Control" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/Control" to="MarginContainer/HBoxContainer/Control" method="_on_mouse_exited"]
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/CheckBoxHitbox" to="MarginContainer/HBoxContainer/CheckBoxHitbox" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/CheckBoxHitbox" to="MarginContainer/HBoxContainer/CheckBoxHitbox" method="_on_mouse_exited"]

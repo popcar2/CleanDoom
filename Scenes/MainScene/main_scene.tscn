@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dvgched8fki6"]
+[gd_scene load_steps=12 format=3 uid="uid://dvgched8fki6"]
 
 [ext_resource type="FontFile" uid="uid://b75tskygvw2u6" path="res://Fonts/Roboto-Regular.ttf" id="1_4htwb"]
 [ext_resource type="Script" path="res://Scenes/MainScene/main_scene.gd" id="2_7s6wy"]
 [ext_resource type="Script" path="res://Scenes/MainScene/AddModButton.gd" id="3_pdnw3"]
+[ext_resource type="Script" path="res://Scenes/MainScene/RemoveModButton.gd" id="4_kahvs"]
 
 [sub_resource type="Theme" id="Theme_5w21q"]
 default_font = ExtResource("1_4htwb")
@@ -14,18 +15,18 @@ border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
 border_color = Color(0.721569, 0.0666667, 0.0666667, 1)
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 corner_detail = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4rlo"]
 bg_color = Color(0.276752, 0.00923777, 0.00930706, 1)
-corner_radius_top_left = 24
-corner_radius_top_right = 24
-corner_radius_bottom_right = 24
-corner_radius_bottom_left = 24
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 corner_detail = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjdc5"]
@@ -100,6 +101,25 @@ access = 2
 filters = PackedStringArray("*.wad,*.pk3; Doom Wad")
 use_native_dialog = true
 
+[node name="RemoveModButton" type="Button" parent="MarginContainer/Control"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -5.0
+offset_right = -71.0
+offset_bottom = 50.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+text = "-"
+script = ExtResource("4_kahvs")
+
 [node name="PanelBorder" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pveqh")
@@ -117,7 +137,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 2
+theme_override_constants/separation = 0
 
 [node name="StartButton" type="Button" parent="."]
 unique_name_in_owner = true
@@ -143,4 +163,5 @@ text = "Start Game"
 
 [connection signal="pressed" from="MarginContainer/Control/AddModButton" to="MarginContainer/Control/AddModButton" method="_on_pressed"]
 [connection signal="files_selected" from="MarginContainer/Control/AddModButton/FileDialog" to="MarginContainer/Control/AddModButton" method="_on_files_selected"]
+[connection signal="pressed" from="MarginContainer/Control/RemoveModButton" to="MarginContainer/Control/RemoveModButton" method="_on_pressed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

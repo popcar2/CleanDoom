@@ -2,11 +2,16 @@ extends Button
 
 var mod_panel_scene: PackedScene = preload("res://Scenes/ModPanel/mod_panel.tscn")
 
+func _ready() -> void:
+	get_window().files_dropped.connect(_on_files_selected)
+
 func _on_pressed() -> void:
 	$FileDialog.visible = true
 
 func _on_files_selected(paths: PackedStringArray, flash: bool = true) -> void:
 	for path: String in paths:
+		if path.get_extension() != "wad" and path.get_extension() != "pk3":
+			continue
 		if is_duplicate_file(path):
 			continue
 		
@@ -21,6 +26,8 @@ func _on_files_selected(paths: PackedStringArray, flash: bool = true) -> void:
 		
 		if flash:
 			mod_panel.flash_panel()
+		
+		$"/root/MainScene".save_profile()
 
 func is_duplicate_file(path: String) -> bool:
 	for panel: ModPanel in %ModsVBoxContainer.get_children():
