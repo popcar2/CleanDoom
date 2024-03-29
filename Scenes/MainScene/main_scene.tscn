@@ -1,0 +1,150 @@
+[gd_scene load_steps=11 format=3 uid="uid://dvgched8fki6"]
+
+[ext_resource type="FontFile" uid="uid://b75tskygvw2u6" path="res://Fonts/Roboto-Regular.ttf" id="1_4htwb"]
+[ext_resource type="Script" path="res://Scenes/MainScene/main_scene.gd" id="2_7s6wy"]
+[ext_resource type="Script" path="res://Scenes/MainScene/AddModButton.gd" id="3_pdnw3"]
+
+[sub_resource type="Theme" id="Theme_5w21q"]
+default_font = ExtResource("1_4htwb")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pveqh"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.721569, 0.0666667, 0.0666667, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4rlo"]
+bg_color = Color(0.276752, 0.00923777, 0.00930706, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjdc5"]
+bg_color = Color(1.34766e-06, 0.281037, 0.386997, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b32ow"]
+bg_color = Color(7.60466e-06, 0.559653, 0.753467, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2ae6"]
+bg_color = Color(1.58831e-06, 0.372635, 0.507479, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1gfv"]
+bg_color = Color(0, 0.454902, 0.615686, 1)
+corner_radius_top_left = 20
+
+[node name="MainScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_5w21q")
+script = ExtResource("2_7s6wy")
+
+[node name="AddModButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -84.0
+offset_top = -155.0
+offset_right = -43.0
+offset_bottom = -100.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+text = "+"
+script = ExtResource("3_pdnw3")
+
+[node name="FileDialog" type="FileDialog" parent="AddModButton"]
+auto_translate_mode = 1
+title = "Open File(s)"
+initial_position = 2
+size = Vector2i(350, 200)
+always_on_top = true
+ok_button_text = "Open"
+file_mode = 1
+access = 2
+filters = PackedStringArray("*.wad,*.pk3; Doom Wad")
+use_native_dialog = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 150.0
+offset_bottom = -150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="PanelBorder" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pveqh")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelBorder"]
+clip_children = 2
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e4rlo")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelBorder/PanelContainer"]
+layout_mode = 2
+
+[node name="ModsVBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelBorder/PanelContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="StartButton" type="Button" parent="."]
+unique_name_in_owner = true
+auto_translate_mode = 1
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -268.0
+offset_top = -75.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 48
+theme_override_styles/disabled = SubResource("StyleBoxFlat_wjdc5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b32ow")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t2ae6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_j1gfv")
+text = "Start Game"
+
+[connection signal="pressed" from="AddModButton" to="AddModButton" method="_on_pressed"]
+[connection signal="files_selected" from="AddModButton/FileDialog" to="AddModButton" method="_on_file_dialog_files_selected"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

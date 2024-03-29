@@ -1,0 +1,263 @@
+[gd_scene load_steps=12 format=3 uid="uid://bah1d3q4pbtie"]
+
+[ext_resource type="FontFile" uid="uid://b75tskygvw2u6" path="res://Fonts/Roboto-Regular.ttf" id="1_4htwb"]
+[ext_resource type="FontFile" uid="uid://hi05li2fdpnu" path="res://Fonts/Roboto-Bold.ttf" id="2_5xofk"]
+[ext_resource type="Script" path="res://Scenes/Intro/intro.gd" id="2_i8sul"]
+[ext_resource type="Script" path="res://Scenes/Intro/ExeSelect.gd" id="4_76plu"]
+[ext_resource type="Texture2D" uid="uid://r0m8pq83tjhe" path="res://Art/open-folder.png" id="5_haktb"]
+
+[sub_resource type="Theme" id="Theme_5dw0q"]
+default_font = ExtResource("1_4htwb")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yu1te"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tq0ue"]
+bg_color = Color(1.34766e-06, 0.281037, 0.386997, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a616s"]
+bg_color = Color(7.60466e-06, 0.559653, 0.753467, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j57q1"]
+bg_color = Color(1.58831e-06, 0.372635, 0.507479, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmddy"]
+bg_color = Color(0, 0.454902, 0.615686, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_5dw0q")
+script = ExtResource("2_i8sul")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.184314, 0.184314, 0.184314, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 20.0
+offset_bottom = 108.0
+grow_horizontal = 2
+theme_override_fonts/bold_font = ExtResource("2_5xofk")
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+bbcode_enabled = true
+text = "[center][b]Let's get started!"
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ExeSelectText" type="RichTextLabel" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Select your source port exe"
+fit_content = true
+
+[node name="ExeSelectMargin" type="MarginContainer" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="ExeSelect" type="Panel" parent="ColorRect/VBoxContainer/ExeSelectMargin"]
+self_modulate = Color(0.721569, 0.0666667, 0.0666667, 1)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yu1te")
+script = ExtResource("4_76plu")
+windows_file_filter = "*.exe"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect"]
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -12.0
+offset_right = -61.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 20
+fit_content = true
+scroll_following = true
+autowrap_mode = 1
+
+[node name="FileDialog" type="FileDialog" parent="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect"]
+title = "Open a File"
+initial_position = 2
+size = Vector2i(350, 200)
+always_on_top = true
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+use_native_dialog = true
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -24.0
+offset_right = -10.0
+offset_bottom = 24.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("5_haktb")
+expand_mode = 1
+
+[node name="Padding" type="Control" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="IWADSelectText" type="RichTextLabel" parent="ColorRect/VBoxContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Select your IWAD"
+fit_content = true
+
+[node name="IWADSelectMargin" type="MarginContainer" parent="ColorRect/VBoxContainer"]
+auto_translate_mode = 1
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="IWADSelect" type="Panel" parent="ColorRect/VBoxContainer/IWADSelectMargin"]
+auto_translate_mode = 1
+self_modulate = Color(0.721569, 0.0666667, 0.0666667, 1)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yu1te")
+script = ExtResource("4_76plu")
+windows_file_filter = "*.iwad,*.wad"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect"]
+auto_translate_mode = 1
+modulate = Color(0.851769, 0.851769, 0.851769, 1)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -12.0
+offset_right = -61.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 20
+fit_content = true
+scroll_following = true
+autowrap_mode = 1
+
+[node name="FileDialog" type="FileDialog" parent="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect"]
+auto_translate_mode = 1
+title = "Open a File"
+initial_position = 2
+size = Vector2i(350, 200)
+always_on_top = true
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+use_native_dialog = true
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -24.0
+offset_right = -10.0
+offset_bottom = 24.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("5_haktb")
+expand_mode = 1
+
+[node name="Padding2" type="Control" parent="ColorRect/VBoxContainer"]
+auto_translate_mode = 1
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="ContinueMargin" type="MarginContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_right = 300
+
+[node name="ContinueButton" type="Button" parent="ColorRect/VBoxContainer/ContinueMargin"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 48
+theme_override_styles/disabled = SubResource("StyleBoxFlat_tq0ue")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a616s")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_j57q1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wmddy")
+disabled = true
+text = "Continue"
+
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect" to="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect" to="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect" method="_on_mouse_exited"]
+[connection signal="file_selected" from="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect/FileDialog" to="." method="_on_exe_file_selected"]
+[connection signal="file_selected" from="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect/FileDialog" to="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect" method="_on_file_dialog_file_selected"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect" to="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect" to="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect" method="_on_mouse_exited"]
+[connection signal="file_selected" from="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect/FileDialog" to="." method="_on_iwad_file_selected"]
+[connection signal="file_selected" from="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect/FileDialog" to="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect" method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/ContinueMargin/ContinueButton" to="." method="_on_continue_button_pressed"]
