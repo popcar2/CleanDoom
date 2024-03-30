@@ -16,8 +16,8 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tq0ue"]
-bg_color = Color(1.34766e-06, 0.281037, 0.386997, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmddy"]
+bg_color = Color(0, 0.454902, 0.615686, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -37,8 +37,8 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmddy"]
-bg_color = Color(0, 0.454902, 0.615686, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tq0ue"]
+bg_color = Color(1.34766e-06, 0.281037, 0.386997, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -64,7 +64,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.184314, 0.184314, 0.184314, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+[node name="Title" type="RichTextLabel" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -101,6 +101,7 @@ theme_override_constants/margin_left = 100
 theme_override_constants/margin_right = 100
 
 [node name="ExeSelect" type="Panel" parent="ColorRect/VBoxContainer/ExeSelectMargin"]
+unique_name_in_owner = true
 self_modulate = Color(0.721569, 0.0666667, 0.0666667, 1)
 layout_mode = 2
 size_flags_vertical = 3
@@ -135,6 +136,7 @@ always_on_top = true
 ok_button_text = "Open"
 file_mode = 0
 access = 2
+filters = PackedStringArray("*; All Files")
 use_native_dialog = true
 
 [node name="TextureRect" type="TextureRect" parent="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect"]
@@ -153,12 +155,28 @@ grow_vertical = 2
 texture = ExtResource("5_haktb")
 expand_mode = 1
 
+[node name="FlatpakLocatedText" type="RichTextLabel" parent="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0.964706, 0.964706, 0.215686, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 74.0
+offset_right = 15.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 18
+text = "Flatpak located! No further action needed."
+
 [node name="Padding" type="Control" parent="ColorRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="IWADSelectText" type="RichTextLabel" parent="ColorRect/VBoxContainer"]
-auto_translate_mode = 1
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
@@ -166,14 +184,12 @@ text = "[center]Select your IWAD"
 fit_content = true
 
 [node name="IWADSelectMargin" type="MarginContainer" parent="ColorRect/VBoxContainer"]
-auto_translate_mode = 1
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_right = 100
 
 [node name="IWADSelect" type="Panel" parent="ColorRect/VBoxContainer/IWADSelectMargin"]
-auto_translate_mode = 1
 self_modulate = Color(0.721569, 0.0666667, 0.0666667, 1)
 layout_mode = 2
 size_flags_vertical = 3
@@ -181,7 +197,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_yu1te")
 script = ExtResource("4_76plu")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect"]
-auto_translate_mode = 1
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
 layout_mode = 1
 anchors_preset = 14
@@ -201,7 +216,6 @@ scroll_following = true
 autowrap_mode = 1
 
 [node name="FileDialog" type="FileDialog" parent="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect"]
-auto_translate_mode = 1
 title = "Open a File"
 initial_position = 2
 size = Vector2i(350, 200)
@@ -213,7 +227,6 @@ filters = PackedStringArray("*.iwad,*.wad", "*; All Files")
 use_native_dialog = true
 
 [node name="TextureRect" type="TextureRect" parent="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect"]
-auto_translate_mode = 1
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -230,7 +243,6 @@ texture = ExtResource("5_haktb")
 expand_mode = 1
 
 [node name="Padding2" type="Control" parent="ColorRect/VBoxContainer"]
-auto_translate_mode = 1
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
@@ -245,10 +257,10 @@ custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 48
-theme_override_styles/disabled = SubResource("StyleBoxFlat_tq0ue")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wmddy")
 theme_override_styles/hover = SubResource("StyleBoxFlat_a616s")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_j57q1")
-theme_override_styles/normal = SubResource("StyleBoxFlat_wmddy")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_tq0ue")
 disabled = true
 text = "Continue"
 

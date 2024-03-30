@@ -7,10 +7,16 @@ func _ready() -> void:
 	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "position:y", 0, 1).from(-50.0)
 	tween.tween_property(self, "modulate:a", 1, 1).from(0.5)
+	
+	if GlobalConfig.gzdoom_flatpak_exists:
+		%FlatpakLocatedText.visible = true
+		%ExeSelect.get_node("RichTextLabel").text = "GZDoom (Flatpak)"
+		GlobalConfig.default_exe = "GZDoom (Flatpak)"
 
 
 func _on_exe_file_selected(path: String) -> void:
 	GlobalConfig.default_exe = path
+	print("Path: %s" % path)
 	if !GlobalConfig.default_iwad.is_empty():
 		%ContinueButton.disabled = false
 

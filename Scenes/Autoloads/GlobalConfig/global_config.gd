@@ -1,11 +1,16 @@
 extends Node
 
-@onready var main_scene: MainScene = $"/root/MainScene"
+@onready var main_scene: MainScene
 
 var default_exe: String
 var default_iwad: String
 
+var gzdoom_flatpak_exists: bool
+
 func _ready() -> void:
+	main_scene = $"/root/MainScene"
+	if main_scene == null:
+		return
 	DisplayServer.window_set_min_size(Vector2i(512, 300))
 	
 	var refresh_rate: float = DisplayServer.screen_get_refresh_rate()
@@ -16,7 +21,17 @@ func _ready() -> void:
 	
 	if !DirAccess.dir_exists_absolute("user://Profiles/"):
 		DirAccess.make_dir_absolute("user://Profiles/")
+	
+	if FileAccess.file_exists("user://Profiles/Default.json"):
+		main_scene.load_profile()
+	else:
 		main_scene.visible = false
 		main_scene.add_sibling.call_deferred(load("res://Scenes/Intro/Intro.tscn").instantiate())
-	else:
-		main_scene.load_profile()
+	
+	# Check if flatpak GZDoom exists
+	if OS.has_feature("linux"):
+		gzdoom_flatpak_exists = true
+		var output: Array[String] = []
+		OS.execute("flatpak", ["list"], output)
+		print("GZDoom flatpak located")
+		

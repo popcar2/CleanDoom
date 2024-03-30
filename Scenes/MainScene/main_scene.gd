@@ -13,10 +13,17 @@ func _on_start_button_pressed() -> void:
 	await get_tree().create_timer(1).timeout
 	%StartButton.text = "Start Game"
 	launching_game = false
-	get_tree().quit()
+	#get_tree().quit()
 
 func start_game() -> void:
-	var argument_strings: Array[String] = ["-iwad %s" % GlobalConfig.default_iwad]
+	var run_flatpak: bool = GlobalConfig.default_exe == "GZDoom (Flatpak)"
+	var argument_strings: Array[String] = []
+	
+	if run_flatpak:
+		argument_strings += ["run", "org.zdoom.GZDoom"]
+	
+	argument_strings += ["-iwad", GlobalConfig.default_iwad]
+	
 	if %ModsVBoxContainer.get_children().size() > 0:
 		argument_strings.append("-file")
 		for mod_panel: Panel in %ModsVBoxContainer.get_children():
@@ -24,8 +31,12 @@ func start_game() -> void:
 				continue
 			argument_strings.append("%s" % mod_panel.get_node("%ModPathText").text)
 	
+	if run_flatpak:
+		OS.create_process("flatpak", argument_strings)
+	else:
+		OS.create_process(GlobalConfig.default_exe, argument_strings)
+	
 	save_profile()
-	OS.create_process(GlobalConfig.default_exe, argument_strings)
 
 func save_profile() -> void:
 	var wad_paths: Array[String] = []

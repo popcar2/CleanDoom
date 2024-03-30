@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dvgched8fki6"]
+[gd_scene load_steps=19 format=3 uid="uid://dvgched8fki6"]
 
 [ext_resource type="FontFile" uid="uid://b75tskygvw2u6" path="res://Fonts/Roboto-Regular.ttf" id="1_4htwb"]
 [ext_resource type="Script" path="res://Scenes/MainScene/main_scene.gd" id="2_7s6wy"]
@@ -16,6 +16,26 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h0iqq"]
+bg_color = Color(0.8, 0.0823529, 0.0823529, 1)
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qssfk"]
+bg_color = Color(0.941176, 0.121569, 0.117647, 1)
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ewiim"]
+bg_color = Color(0.662745, 0.054902, 0.0588235, 1)
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndhtr"]
+bg_color = Color(0.423529, 0.0235294, 0.0235294, 1)
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pveqh"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -38,8 +58,8 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 corner_detail = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjdc5"]
-bg_color = Color(6.49765e-07, 0.299853, 0.119959, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1gfv"]
+bg_color = Color(0, 0.503124, 0.217722, 1)
 corner_radius_top_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b32ow"]
@@ -50,8 +70,8 @@ corner_radius_top_left = 20
 bg_color = Color(8.18223e-07, 0.470913, 0.2043, 1)
 corner_radius_top_left = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1gfv"]
-bg_color = Color(0, 0.503124, 0.217722, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjdc5"]
+bg_color = Color(6.49765e-07, 0.299853, 0.119959, 1)
 corner_radius_top_left = 20
 
 [node name="MainScene" type="Control"]
@@ -65,7 +85,6 @@ theme = SubResource("Theme_5w21q")
 script = ExtResource("2_7s6wy")
 
 [node name="IWADSelect" type="Panel" parent="."]
-auto_translate_mode = 1
 self_modulate = Color(0.721569, 0.0666667, 0.0666667, 1)
 custom_minimum_size = Vector2(300, 50)
 layout_mode = 1
@@ -83,7 +102,6 @@ script = ExtResource("3_jxkho")
 
 [node name="IWADSelectText" type="RichTextLabel" parent="IWADSelect"]
 unique_name_in_owner = true
-auto_translate_mode = 1
 modulate = Color(0.973535, 0.973535, 0.973535, 1)
 layout_mode = 1
 anchors_preset = 14
@@ -105,7 +123,6 @@ scroll_following = true
 autowrap_mode = 1
 
 [node name="FileDialog" type="FileDialog" parent="IWADSelect"]
-auto_translate_mode = 1
 title = "Open a File"
 initial_position = 2
 size = Vector2i(350, 200)
@@ -117,7 +134,6 @@ filters = PackedStringArray("*.iwad,*.wad", "*; All Files")
 use_native_dialog = true
 
 [node name="TextureRect" type="TextureRect" parent="IWADSelect"]
-auto_translate_mode = 1
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -134,7 +150,6 @@ texture = ExtResource("4_djb5r")
 expand_mode = 1
 
 [node name="ExeSelect" type="Panel" parent="."]
-auto_translate_mode = 1
 self_modulate = Color(0.721569, 0.0666667, 0.0666667, 1)
 custom_minimum_size = Vector2(300, 50)
 layout_mode = 1
@@ -149,7 +164,6 @@ windows_file_filter = "*.exe; Executable"
 
 [node name="ExeSelectText" type="RichTextLabel" parent="ExeSelect"]
 unique_name_in_owner = true
-auto_translate_mode = 1
 modulate = Color(0.973535, 0.973535, 0.973535, 1)
 layout_mode = 1
 anchors_preset = 14
@@ -171,7 +185,6 @@ scroll_following = true
 autowrap_mode = 1
 
 [node name="FileDialog" type="FileDialog" parent="ExeSelect"]
-auto_translate_mode = 1
 title = "Open a File"
 initial_position = 2
 size = Vector2i(350, 200)
@@ -182,7 +195,6 @@ access = 2
 use_native_dialog = true
 
 [node name="TextureRect" type="TextureRect" parent="ExeSelect"]
-auto_translate_mode = 1
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -229,11 +241,14 @@ offset_bottom = 50.0
 grow_horizontal = 0
 grow_vertical = 0
 focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_h0iqq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qssfk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ewiim")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ndhtr")
 text = "+"
 script = ExtResource("3_pdnw3")
 
 [node name="FileDialog" type="FileDialog" parent="MarginContainer/Control/AddModButton"]
-auto_translate_mode = 1
 title = "Open File(s)"
 initial_position = 2
 size = Vector2i(350, 200)
@@ -246,7 +261,6 @@ use_native_dialog = true
 
 [node name="RemoveModButton" type="Button" parent="MarginContainer/Control"]
 unique_name_in_owner = true
-auto_translate_mode = 1
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -260,6 +274,10 @@ offset_bottom = 50.0
 grow_horizontal = 0
 grow_vertical = 0
 focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_h0iqq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qssfk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ewiim")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ndhtr")
 action_mode = 0
 text = "-"
 script = ExtResource("4_kahvs")
@@ -285,7 +303,6 @@ theme_override_constants/separation = 0
 
 [node name="StartButton" type="Button" parent="."]
 unique_name_in_owner = true
-auto_translate_mode = 1
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 1
 anchors_preset = 3
@@ -299,10 +316,10 @@ grow_horizontal = 0
 grow_vertical = 0
 focus_mode = 0
 theme_override_font_sizes/font_size = 48
-theme_override_styles/disabled = SubResource("StyleBoxFlat_wjdc5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_j1gfv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_b32ow")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t2ae6")
-theme_override_styles/normal = SubResource("StyleBoxFlat_j1gfv")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_wjdc5")
 text = "Start Game"
 
 [connection signal="mouse_entered" from="IWADSelect" to="IWADSelect" method="_on_mouse_entered"]

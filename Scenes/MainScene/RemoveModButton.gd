@@ -6,7 +6,7 @@ func _ready() -> void:
 
 func _on_pressed() -> void:
 	var selected_panel = %ModsVBoxContainer.get_child(0).selected_panel
-	if selected_panel:
+	if selected_panel != null:
 		selected_panel.queue_free()
 	
 	await get_tree().process_frame

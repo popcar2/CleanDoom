@@ -43,7 +43,7 @@ func _input(event: InputEvent) -> void:
 				else:
 					double_click_timer.start(0.25)
 				
-				if selected_panel and selected_panel != self:
+				if selected_panel != null and selected_panel != self:
 					selected_panel.deselect_panel()
 				select_panel()
 			else:
