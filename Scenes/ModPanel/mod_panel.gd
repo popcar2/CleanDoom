@@ -3,6 +3,8 @@ class_name ModPanel
 
 static var selected_panel: ModPanel
 
+@onready var double_click_timer: Timer = $DoubleClickTimer
+
 var is_mouse_over: bool
 var start_color: Color
 
@@ -33,6 +35,13 @@ func _input(event: InputEvent) -> void:
 		if event.button_index == 1 and event.is_pressed():
 			if is_mouse_over:
 				is_grabbed = true
+				
+				if !double_click_timer.is_stopped():
+					is_grabbed = false
+					$FileDialog.visible = true
+					double_click_timer.stop()
+				else:
+					double_click_timer.start(0.25)
 				
 				if selected_panel and selected_panel != self:
 					selected_panel.deselect_panel()
@@ -67,3 +76,13 @@ func _on_mouse_exited() -> void:
 	is_mouse_over = false
 	if self != selected_panel:
 		self_modulate = start_color
+
+func _on_file_dialog_file_selected(path: String) -> void:
+	# Validate it doesn't already exist
+	for panel: ModPanel in $"/root/MainScene".get_node("%ModsVBoxContainer").get_children():
+		if panel.get_node("%ModPathText").text == path:
+			panel.flash_panel()
+			return
+	
+	%ModPathText.text = path
+	%ModTitleText.text = path.get_file().split(".")[0]

@@ -92,8 +92,25 @@ button_pressed = true
 alignment = 1
 icon_alignment = 1
 
+[node name="DoubleClickTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="FileDialog" type="FileDialog" parent="."]
+auto_translate_mode = 1
+title = "Open a File"
+initial_position = 2
+size = Vector2i(350, 200)
+always_on_top = true
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.wad,*.pk3; Doom Wad", "*; All Files")
+use_native_dialog = true
+
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="MarginContainer/HBoxContainer/CheckBoxHitbox" to="MarginContainer/HBoxContainer/CheckBoxHitbox" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/HBoxContainer/CheckBoxHitbox" to="MarginContainer/HBoxContainer/CheckBoxHitbox" method="_on_mouse_exited"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
