@@ -39,19 +39,19 @@ corner_radius_bottom_left = 16
 corner_detail = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjdc5"]
-bg_color = Color(1.34766e-06, 0.281037, 0.386997, 1)
+bg_color = Color(6.49765e-07, 0.299853, 0.119959, 1)
 corner_radius_top_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b32ow"]
-bg_color = Color(7.60466e-06, 0.559653, 0.753467, 1)
+bg_color = Color(1.10701e-06, 0.617632, 0.276639, 1)
 corner_radius_top_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2ae6"]
-bg_color = Color(1.58831e-06, 0.372635, 0.507479, 1)
+bg_color = Color(8.18223e-07, 0.470913, 0.2043, 1)
 corner_radius_top_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1gfv"]
-bg_color = Color(0, 0.454902, 0.615686, 1)
+bg_color = Color(0, 0.503124, 0.217722, 1)
 corner_radius_top_left = 20
 
 [node name="MainScene" type="Control"]
