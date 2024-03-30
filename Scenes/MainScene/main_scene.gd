@@ -1,11 +1,18 @@
 extends Control
 class_name MainScene
 
+var launching_game: bool
+
 func _on_start_button_pressed() -> void:
+	if launching_game:
+		return
+	
+	launching_game = true
 	start_game()
 	%StartButton.text = "Have fun!"
 	await get_tree().create_timer(1).timeout
 	%StartButton.text = "Start Game"
+	launching_game = false
 	get_tree().quit()
 
 func start_game() -> void:
@@ -62,6 +69,8 @@ func load_profile(profile_name: String = "Default") -> void:
 	var save_data: Dictionary = json.data
 	GlobalConfig.default_exe = save_data.default_exe
 	GlobalConfig.default_iwad = save_data.default_iwad
+	%IWADSelectText.text = "[center]%s" % save_data.default_iwad.get_file()
+	%ExeSelectText.text = "[center]%s" % save_data.default_exe.get_file()
 	%AddModButton._on_files_selected(save_data.wad_paths as PackedStringArray, false)
 	
 	for mod_panel: ModPanel in %ModsVBoxContainer.get_children():
@@ -69,3 +78,11 @@ func load_profile(profile_name: String = "Default") -> void:
 
 func _exit_tree() -> void:
 	save_profile()
+
+func _on_iwad_selected(path: String) -> void:
+	GlobalConfig.default_iwad = path
+	%IWADSelectText.text = "[center]%s" % path.get_file()
+
+func _on_exe_selected(path: String) -> void:
+	GlobalConfig.default_exe = path
+	%ExeSelectText.text = "[center]%s" % path.get_file()

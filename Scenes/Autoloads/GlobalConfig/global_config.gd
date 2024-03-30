@@ -1,5 +1,7 @@
 extends Node
 
+@onready var main_scene: MainScene = $"/root/MainScene"
+
 var default_exe: String
 var default_iwad: String
 
@@ -12,7 +14,6 @@ func _ready() -> void:
 	else:
 		Engine.max_fps = round(refresh_rate)
 	
-	var main_scene: MainScene = $"/root/MainScene"
 	if !DirAccess.dir_exists_absolute("user://Profiles/"):
 		DirAccess.make_dir_absolute("user://Profiles/")
 		main_scene.visible = false

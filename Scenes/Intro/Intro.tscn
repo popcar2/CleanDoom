@@ -179,7 +179,6 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_yu1te")
 script = ExtResource("4_76plu")
-windows_file_filter = "*.iwad,*.wad"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect"]
 auto_translate_mode = 1
@@ -210,6 +209,7 @@ always_on_top = true
 ok_button_text = "Open"
 file_mode = 0
 access = 2
+filters = PackedStringArray("*.iwad,*.wad", "*; All Files")
 use_native_dialog = true
 
 [node name="TextureRect" type="TextureRect" parent="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect"]

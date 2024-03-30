@@ -58,7 +58,6 @@ func deselect_panel() -> void:
 	self_modulate = start_color
 	selected_panel = null
 
-
 func _on_mouse_entered() -> void:
 	is_mouse_over = true
 	if self != selected_panel:

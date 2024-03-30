@@ -24,6 +24,9 @@ func _on_continue_button_pressed() -> void:
 	var main_scene: Control = $"/root/MainScene"
 	main_scene.visible = true
 	
+	main_scene.get_node("%IWADSelectText").text = "[center]%s" % GlobalConfig.default_iwad.get_file()
+	main_scene.get_node("%ExeSelectText").text = "[center]%s" % GlobalConfig.default_exe.get_file()
+	
 	var window_size: Vector2 = get_window().size
 	
 	var tween: Tween = create_tween()

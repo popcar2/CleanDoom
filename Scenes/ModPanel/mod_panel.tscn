@@ -33,6 +33,7 @@ layout_mode = 2
 
 [node name="ModTitleText" type="RichTextLabel" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
+modulate = Color(0.972549, 0.972549, 0.972549, 1)
 custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -49,6 +50,7 @@ mouse_filter = 2
 [node name="ModPathText" type="RichTextLabel" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 auto_translate_mode = 1
+modulate = Color(0.972549, 0.972549, 0.972549, 1)
 custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
 size_flags_horizontal = 3
