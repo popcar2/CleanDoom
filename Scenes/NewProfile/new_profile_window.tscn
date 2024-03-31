@@ -1,0 +1,102 @@
+[gd_scene load_steps=8 format=3 uid="uid://can42bi8nub8n"]
+
+[ext_resource type="FontFile" uid="uid://b75tskygvw2u6" path="res://Fonts/Roboto-Regular.ttf" id="1_7ijqi"]
+[ext_resource type="Script" path="res://Scenes/MainScene/ConsoleCommandTextEdit.gd" id="1_gyuah"]
+[ext_resource type="Script" path="res://Scenes/NewProfile/new_profile_window.gd" id="1_slyqa"]
+
+[sub_resource type="Theme" id="Theme_x5ffo"]
+default_font = ExtResource("1_7ijqi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cf8v5"]
+bg_color = Color(0.258824, 0.00784314, 0.00784314, 1)
+border_color = Color(0.721569, 0.0666667, 0.0666667, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wlik5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ca7ck"]
+
+[node name="NewProfileWindow" type="Window"]
+title = "New Profile"
+initial_position = 1
+size = Vector2i(400, 140)
+transient = true
+unresizable = true
+popup_window = true
+script = ExtResource("1_slyqa")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_x5ffo")
+
+[node name="ProfileNamePanel" type="Panel" parent="Control"]
+custom_minimum_size = Vector2(300, 35)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 25.0
+offset_top = 20.0
+offset_right = -25.0
+offset_bottom = 70.0
+grow_horizontal = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_cf8v5")
+
+[node name="ProfileName" type="TextEdit" parent="Control/ProfileNamePanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wlik5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ca7ck")
+placeholder_text = "Profile Name"
+script = ExtResource("1_gyuah")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -50.0
+offset_right = -25.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="Cancel" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Cancel"
+
+[node name="Continue" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Create Profile"
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="focus_entered" from="Control/ProfileNamePanel/ProfileName" to="Control/ProfileNamePanel/ProfileName" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Control/ProfileNamePanel/ProfileName" to="Control/ProfileNamePanel/ProfileName" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="Control/ProfileNamePanel/ProfileName" to="Control/ProfileNamePanel/ProfileName" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control/ProfileNamePanel/ProfileName" to="Control/ProfileNamePanel/ProfileName" method="_on_mouse_exited"]
+[connection signal="pressed" from="Control/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/Continue" to="." method="_on_continue_pressed"]

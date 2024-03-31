@@ -43,8 +43,13 @@ func start_game() -> void:
 	
 	save_profile()
 
-func save_profile() -> void:
-	var profile_name = %SelectedProfileText.text.trim_prefix("[center]")
+func save_profile(profile_name_override: String = "") -> void:
+	var profile_name: String
+	if profile_name_override.is_empty():
+		profile_name = %SelectedProfileText.text.trim_prefix("[center]")
+	else:
+		profile_name = profile_name_override
+	
 	print("Saving %s" % profile_name)
 	
 	var wad_paths: Array[String] = []
@@ -103,12 +108,26 @@ func switch_profile(next_profile: String):
 	save_profile()
 	%ProfilesContainer.visible = false
 	
+	clear_profile()
+	
+	#TODO: Verify file actually exists
+	load_profile(next_profile, true)
+
+func create_profile(profile_name: String):
+	save_profile()
+	clear_profile()
+	save_profile(profile_name)
+	
+	%SelectedProfileText.text = "[center]%s" % profile_name
+	%ProfileSelect.add_profile_panel(profile_name)
+
+
+func clear_profile():
 	for mod_panel: Control in %ModsVBoxContainer.get_children():
 		%ModsVBoxContainer.remove_child(mod_panel)
 		mod_panel.queue_free()
 	
-	#TODO: Verify file actually exists
-	load_profile(next_profile, true)
+	%ConsoleCommandTextEdit.text = ""
 
 func _exit_tree() -> void:
 	save_profile()

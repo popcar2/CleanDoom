@@ -1,6 +1,7 @@
 extends Panel
 
 @onready var profiles_container: PanelContainer = %ProfilesContainer
+@onready var profiles_vbox: VBoxContainer = profiles_container.get_node("VBoxContainer")
 
 var profile_panel: PackedScene = preload("res://Scenes/ProfilePanel/profile_panel.tscn")
 
@@ -12,13 +13,14 @@ func _ready():
 	for file: String in DirAccess.get_files_at("user://Profiles/"):
 		var new_panel: ProfilePanel = profile_panel.instantiate()
 		new_panel.get_node("%ProfileName").text = "[center]%s" % file.trim_suffix(".json")
-		profiles_container.get_node("VBoxContainer").add_child(new_panel)
+		profiles_vbox.add_child(new_panel)
 	
 	if profiles_container.get_node("VBoxContainer").get_child_count() == 0:
 		%SelectedProfileText.text = "Default"
-		var new_panel: ProfilePanel = profile_panel.instantiate()
-		new_panel.get_node("%ProfileName").text = "[center]Default"
-		profiles_container.get_node("VBoxContainer").add_child(new_panel)
+		add_profile_panel("Default")
+	
+	profiles_vbox.add_child(HSeparator.new())
+	profiles_vbox.add_child(load("res://Scenes/NewProfile/new_profile_button.tscn").instantiate())
 
 func _input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == 1 and event.is_pressed():
@@ -64,3 +66,11 @@ func hide_profiles_container():
 	await tween.tween_property(profiles_container, "position:y", 20.0, 0.2).finished
 	if profiles_container.visible:
 		profiles_container.visible = false
+
+func add_profile_panel(profile_name: String):
+	var new_panel: ProfilePanel = profile_panel.instantiate()
+	new_panel.get_node("%ProfileName").text = "[center]%s" % profile_name
+	profiles_vbox.add_child(new_panel)
+	await get_tree().process_frame
+	# Moves this above new profile button and separator
+	profiles_vbox.move_child(new_panel, -3) # TODO make this less hacky lol

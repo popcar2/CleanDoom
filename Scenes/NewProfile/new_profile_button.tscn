@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://v8b5wxp2ntq1"]
+
+[ext_resource type="Script" path="res://Scenes/NewProfile/new_profile_button.gd" id="1_cxec7"]
+[ext_resource type="PackedScene" uid="uid://can42bi8nub8n" path="res://Scenes/NewProfile/new_profile_window.tscn" id="1_eyyqk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhcvs"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Panel" type="Panel"]
+self_modulate = Color(0.721569, 0.0666667, 0.0666667, 1)
+custom_minimum_size = Vector2(0, 40)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yhcvs")
+script = ExtResource("1_cxec7")
+
+[node name="NewProfileWindow" parent="." instance=ExtResource("1_eyyqk")]
+visible = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[center]New Profile"
+fit_content = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
