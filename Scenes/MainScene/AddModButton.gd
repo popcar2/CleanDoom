@@ -8,7 +8,7 @@ func _ready() -> void:
 func _on_pressed() -> void:
 	$FileDialog.visible = true
 
-func _on_files_selected(paths: PackedStringArray, flash: bool = true) -> void:
+func _on_files_selected(paths: PackedStringArray, flash: bool = true, save: bool = true) -> void:
 	for path: String in paths:
 		if path.get_extension() != "wad" and path.get_extension() != "pk3":
 			continue
@@ -27,7 +27,8 @@ func _on_files_selected(paths: PackedStringArray, flash: bool = true) -> void:
 		if flash:
 			mod_panel.flash_panel()
 		
-		$"/root/MainScene".save_profile()
+		if save:
+			$"/root/MainScene".save_profile()
 
 func is_duplicate_file(path: String) -> bool:
 	for panel: ModPanel in %ModsVBoxContainer.get_children():

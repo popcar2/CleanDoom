@@ -55,7 +55,8 @@ func save_profile() -> void:
 		"default_exe": GlobalConfig.default_exe,
 		"default_iwad": GlobalConfig.default_iwad,
 		"wad_paths": wad_paths,
-		"wads_enabled": wads_enabled
+		"wads_enabled": wads_enabled,
+		"custom_commands": %ConsoleCommandTextEdit.text
 	}
 	
 	var save_string: String = JSON.stringify(data)
@@ -87,7 +88,8 @@ func load_profile(profile_name: String = "Default") -> void:
 	GlobalConfig.default_iwad = save_data.default_iwad
 	%IWADSelectText.text = "[center]%s" % save_data.default_iwad.get_file()
 	%ExeSelectText.text = "[center]%s" % save_data.default_exe.get_file()
-	%AddModButton._on_files_selected(save_data.wad_paths as PackedStringArray, false)
+	%AddModButton._on_files_selected(save_data.wad_paths as PackedStringArray, false, false)
+	%ConsoleCommandTextEdit.text = save_data.custom_commands
 	
 	for mod_panel: ModPanel in %ModsVBoxContainer.get_children():
 		mod_panel.get_node("%CheckBox").button_pressed = save_data.wads_enabled.pop_front()
