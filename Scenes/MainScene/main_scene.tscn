@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dvgched8fki6"]
+[gd_scene load_steps=26 format=3 uid="uid://dvgched8fki6"]
 
 [ext_resource type="FontFile" uid="uid://b75tskygvw2u6" path="res://Fonts/Roboto-Regular.ttf" id="1_4htwb"]
 [ext_resource type="Script" path="res://Scenes/MainScene/main_scene.gd" id="2_7s6wy"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scenes/MainScene/RemoveModButton.gd" id="4_kahvs"]
 [ext_resource type="Script" path="res://Scenes/MainScene/profile_select.gd" id="5_jbqkg"]
 [ext_resource type="Texture2D" uid="uid://b54x4jpjoyi6r" path="res://Art/dropdown-icon.png" id="5_yykeh"]
+[ext_resource type="FontFile" uid="uid://hi05li2fdpnu" path="res://Fonts/Roboto-Bold.ttf" id="6_ugyx2"]
 [ext_resource type="Script" path="res://Scenes/MainScene/ConsoleCommandTextEdit.gd" id="7_v2i11"]
 
 [sub_resource type="Theme" id="Theme_5w21q"]
@@ -222,6 +223,28 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
+
+[node name="NoModsTexts" type="Control" parent="ModsMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ModsMenu/NoModsTexts"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 20.0
+offset_bottom = 134.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.74902, 0.74902, 0.74902, 1)
+theme_override_fonts/bold_font = ExtResource("6_ugyx2")
+theme_override_font_sizes/bold_font_size = 28
+bbcode_enabled = true
+text = "[center][b]You don't have any mods yet...
+
+Press + to add new mods, or drag and drop mods into the window!"
+fit_content = true
 
 [node name="TopBar" type="HBoxContainer" parent="."]
 layout_mode = 1

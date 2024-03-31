@@ -11,6 +11,12 @@ func _ready():
 		var new_panel: ProfilePanel = profile_panel.instantiate()
 		new_panel.get_node("%ProfileName").text = "[center]%s" % file.trim_suffix(".json")
 		profiles_container.get_node("VBoxContainer").add_child(new_panel)
+	
+	if profiles_container.get_node("VBoxContainer").get_child_count() == 0:
+		%SelectedProfileText.text = "Default"
+		var new_panel: ProfilePanel = profile_panel.instantiate()
+		new_panel.get_node("%ProfileName").text = "[center]Default"
+		profiles_container.get_node("VBoxContainer").add_child(new_panel)
 
 func _gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == 1 and event.is_pressed():

@@ -41,10 +41,12 @@ func start_game() -> void:
 	else:
 		OS.create_process(GlobalConfig.default_exe, argument_strings)
 	
-	save_profile(%SelectedProfileText.text.trim_prefix("[center]"))
+	save_profile()
 
-func save_profile(profile_name: String = "Default") -> void:
+func save_profile() -> void:
+	var profile_name = %SelectedProfileText.text.trim_prefix("[center]")
 	print("Saving %s" % profile_name)
+	
 	var wad_paths: Array[String] = []
 	var wads_enabled: Array[bool] = []
 	
@@ -98,7 +100,7 @@ func load_profile(profile_name: String = "Default", flash: bool = false) -> void
 		mod_panel.get_node("%CheckBox").button_pressed = save_data.wads_enabled.pop_front()
 
 func switch_profile(next_profile: String):
-	save_profile(%SelectedProfileText.text.trim_prefix("[center]"))
+	save_profile()
 	%ProfilesContainer.visible = false
 	
 	for mod_panel: Control in %ModsVBoxContainer.get_children():
@@ -109,7 +111,7 @@ func switch_profile(next_profile: String):
 	load_profile(next_profile, true)
 
 func _exit_tree() -> void:
-	save_profile(%SelectedProfileText.text.trim_prefix("[center]"))
+	save_profile()
 
 func _on_iwad_selected(path: String) -> void:
 	GlobalConfig.default_iwad = path
