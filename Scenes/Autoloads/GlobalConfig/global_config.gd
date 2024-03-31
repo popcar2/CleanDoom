@@ -11,7 +11,7 @@ func _ready() -> void:
 	main_scene = $"/root/MainScene"
 	if main_scene == null:
 		return
-	DisplayServer.window_set_min_size(Vector2i(512, 300))
+	DisplayServer.window_set_min_size(Vector2i(720, 300))
 	
 	var refresh_rate: float = DisplayServer.screen_get_refresh_rate()
 	if refresh_rate < 0:

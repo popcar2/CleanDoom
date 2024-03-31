@@ -1,6 +1,6 @@
 extends Panel
 
-@onready var profiles_container: PanelContainer = $ProfilesContainer
+@onready var profiles_container: PanelContainer = %ProfilesContainer
 
 var profile_panel: PackedScene = preload("res://Scenes/ProfilePanel/profile_panel.tscn")
 
@@ -48,11 +48,14 @@ func show_profiles_container():
 	tween.set_parallel(true)
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	
+	await get_tree().process_frame
 	profiles_container.visible = true
 	tween.tween_property(profiles_container, "modulate:a", 1, 0.4)
 	tween.tween_property(profiles_container, "position:y", 57.0, 0.4).from(20.0)
 
 func hide_profiles_container():
+	profiles_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	
 	var tween: Tween = create_tween()
 	tween.set_parallel(true)
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
