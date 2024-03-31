@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://1bheidqt2t0y"]
+[gd_scene load_steps=8 format=3 uid="uid://1bheidqt2t0y"]
 
 [ext_resource type="Script" path="res://Scenes/ProfilePanel/profile_panel.gd" id="1_wokcq"]
 [ext_resource type="Texture2D" uid="uid://duht8dm23rra3" path="res://Art/trash-can.png" id="2_keq8p"]
+[ext_resource type="Script" path="res://Scenes/ProfilePanel/DeleteProfileWindow.gd" id="3_geq2b"]
+[ext_resource type="FontFile" uid="uid://b75tskygvw2u6" path="res://Fonts/Roboto-Regular.ttf" id="4_avmpy"]
+[ext_resource type="FontFile" uid="uid://hi05li2fdpnu" path="res://Fonts/Roboto-Bold.ttf" id="4_ymtop"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oydtk"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Theme" id="Theme_x5ffo"]
+default_font = ExtResource("4_avmpy")
 
 [node name="ProfilePanel" type="Panel"]
 self_modulate = Color(0.721569, 0.0666667, 0.0666667, 1)
@@ -42,6 +48,7 @@ text = "[center]This is a profile right?"
 fit_content = true
 
 [node name="TrashButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 focus_mode = 0
@@ -49,5 +56,68 @@ icon = ExtResource("2_keq8p")
 icon_alignment = 1
 expand_icon = true
 
+[node name="DeleteProfileWindow" type="Window" parent="HBoxContainer/TrashButton"]
+title = "New Profile"
+initial_position = 1
+size = Vector2i(400, 120)
+visible = false
+transient = true
+unresizable = true
+popup_window = true
+script = ExtResource("3_geq2b")
+
+[node name="Control" type="Control" parent="HBoxContainer/TrashButton/DeleteProfileWindow"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_x5ffo")
+
+[node name="DeleteProfileText" type="RichTextLabel" parent="HBoxContainer/TrashButton/DeleteProfileWindow/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 20.0
+offset_bottom = 58.0
+grow_horizontal = 2
+theme_override_fonts/bold_font = ExtResource("4_ymtop")
+bbcode_enabled = true
+text = "[center]Are you sure you want to delete 
+[b]PROFILE_NAMEEEEEEEE?"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/TrashButton/DeleteProfileWindow/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -50.0
+offset_right = -25.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="Cancel" type="Button" parent="HBoxContainer/TrashButton/DeleteProfileWindow/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Cancel"
+
+[node name="Delete" type="Button" parent="HBoxContainer/TrashButton/DeleteProfileWindow/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Delete Profile"
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/TrashButton" to="HBoxContainer/TrashButton/DeleteProfileWindow" method="_on_trash_button_pressed"]
+[connection signal="close_requested" from="HBoxContainer/TrashButton/DeleteProfileWindow" to="HBoxContainer/TrashButton/DeleteProfileWindow" method="_on_close_requested"]
+[connection signal="pressed" from="HBoxContainer/TrashButton/DeleteProfileWindow/Control/HBoxContainer/Cancel" to="HBoxContainer/TrashButton/DeleteProfileWindow" method="_on_cancel_pressed"]
+[connection signal="pressed" from="HBoxContainer/TrashButton/DeleteProfileWindow/Control/HBoxContainer/Delete" to="HBoxContainer/TrashButton/DeleteProfileWindow" method="_on_delete_pressed"]

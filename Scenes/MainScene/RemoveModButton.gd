@@ -10,8 +10,10 @@ func _on_pressed() -> void:
 		return
 	
 	var selected_panel = %ModsVBoxContainer.get_child(0).selected_panel
-	if selected_panel != null:
-		selected_panel.queue_free()
+	if selected_panel == null:
+		return
+	
+	selected_panel.queue_free()
 	
 	await get_tree().process_frame
 	$"/root/MainScene".save_profile()

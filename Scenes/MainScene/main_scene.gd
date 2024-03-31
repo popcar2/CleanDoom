@@ -121,13 +121,24 @@ func create_profile(profile_name: String):
 	%SelectedProfileText.text = "[center]%s" % profile_name
 	%ProfileSelect.add_profile_panel(profile_name)
 
-
 func clear_profile():
 	for mod_panel: Control in %ModsVBoxContainer.get_children():
 		%ModsVBoxContainer.remove_child(mod_panel)
 		mod_panel.queue_free()
 	
 	%ConsoleCommandTextEdit.text = ""
+
+func delete_profile(profile_name: String):
+	switch_profile("Default")
+	var err: Error = DirAccess.remove_absolute("user://Profiles/%s.json" % profile_name)
+	
+	if err:
+		printerr("Failed to delete profile file: ", err)
+		return
+	
+	# Squish profile container's size back down after deletion of panel
+	await get_tree().process_frame
+	%ProfilesContainer.size.y = 0 
 
 func _exit_tree() -> void:
 	save_profile()

@@ -1,6 +1,13 @@
 extends Panel
 class_name ProfilePanel
 
+func _ready():
+	%DeleteProfileText.text = "[center]Are you sure you want to delete\n[b]%s?" % %ProfileName.text
+
+func delete_profile_panel():
+	queue_free()
+	$"/root/MainScene".delete_profile(%ProfileName.text.trim_prefix("[center]"))
+
 func _gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == 1 and event.is_pressed():
 		$"/root/MainScene".switch_profile(%ProfileName.text.trim_prefix("[center]"))
