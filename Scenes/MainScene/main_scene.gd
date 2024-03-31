@@ -41,9 +41,10 @@ func start_game() -> void:
 	else:
 		OS.create_process(GlobalConfig.default_exe, argument_strings)
 	
-	save_profile()
+	save_profile(%SelectedProfileText.text.trim_prefix("[center]"))
 
-func save_profile() -> void:
+func save_profile(profile_name: String = "Default") -> void:
+	print("Saving %s" % profile_name)
 	var wad_paths: Array[String] = []
 	var wads_enabled: Array[bool] = []
 	
@@ -60,7 +61,7 @@ func save_profile() -> void:
 	}
 	
 	var save_string: String = JSON.stringify(data)
-	var file_access := FileAccess.open("user://Profiles/Default.json", FileAccess.WRITE)
+	var file_access := FileAccess.open("user://Profiles/%s.json" % profile_name, FileAccess.WRITE)
 	if not file_access:
 		printerr("Failed to save file: ", FileAccess.get_open_error())
 		return
@@ -68,7 +69,7 @@ func save_profile() -> void:
 	file_access.store_line(save_string)
 	file_access.close()
 
-func load_profile(profile_name: String = "Default") -> void:
+func load_profile(profile_name: String = "Default", flash: bool = false) -> void:
 	var save_path: String = "user://Profiles/%s.json" % profile_name
 	if not FileAccess.file_exists(save_path):
 		return
@@ -77,25 +78,38 @@ func load_profile(profile_name: String = "Default") -> void:
 	var save_string: String = file_access.get_line()
 	file_access.close()
 	
-	var json: JSON= JSON.new()
+	var json: JSON = JSON.new()
 	var err: Error = json.parse(save_string)
 	if err:
-		print("JSON Parse Error: ", json.get_error_message(), " in ", save_string, " at line ", json.get_error_line())
+		printerr("JSON Parse Error: ", json.get_error_message(), " in ", save_string, " at line ", json.get_error_line())
 		return
+	
+	%SelectedProfileText.text = "[center]%s" % profile_name
 	
 	var save_data: Dictionary = json.data
 	GlobalConfig.default_exe = save_data.default_exe
 	GlobalConfig.default_iwad = save_data.default_iwad
 	%IWADSelectText.text = "[center]%s" % save_data.default_iwad.get_file()
 	%ExeSelectText.text = "[center]%s" % save_data.default_exe.get_file()
-	%AddModButton._on_files_selected(save_data.wad_paths as PackedStringArray, false, false)
+	%AddModButton._on_files_selected(save_data.wad_paths as PackedStringArray, flash, false)
 	%ConsoleCommandTextEdit.text = save_data.custom_commands
 	
 	for mod_panel: ModPanel in %ModsVBoxContainer.get_children():
 		mod_panel.get_node("%CheckBox").button_pressed = save_data.wads_enabled.pop_front()
 
+func switch_profile(next_profile: String):
+	save_profile(%SelectedProfileText.text.trim_prefix("[center]"))
+	%ProfilesContainer.visible = false
+	
+	for mod_panel: Control in %ModsVBoxContainer.get_children():
+		%ModsVBoxContainer.remove_child(mod_panel)
+		mod_panel.queue_free()
+	
+	#TODO: Verify file actually exists
+	load_profile(next_profile, true)
+
 func _exit_tree() -> void:
-	save_profile()
+	save_profile(%SelectedProfileText.text.trim_prefix("[center]"))
 
 func _on_iwad_selected(path: String) -> void:
 	GlobalConfig.default_iwad = path

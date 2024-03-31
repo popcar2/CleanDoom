@@ -7,7 +7,6 @@
 bg_color = Color(1, 1, 1, 1)
 
 [node name="ModPanel" type="Panel"]
-auto_translate_mode = 1
 self_modulate = Color(0.819608, 0.0862745, 0.0862745, 1)
 custom_minimum_size = Vector2(0, 30)
 anchors_preset = 10
@@ -38,7 +37,7 @@ custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-size_flags_stretch_ratio = 0.25
+size_flags_stretch_ratio = 0.3
 mouse_filter = 2
 text = "Hello"
 autowrap_mode = 0
@@ -49,7 +48,6 @@ mouse_filter = 2
 
 [node name="ModPathText" type="RichTextLabel" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
-auto_translate_mode = 1
 modulate = Color(0.972549, 0.972549, 0.972549, 1)
 custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
@@ -60,14 +58,13 @@ text = "Hello"
 autowrap_mode = 0
 
 [node name="VSeparator2" type="VSeparator" parent="MarginContainer/HBoxContainer"]
-auto_translate_mode = 1
 layout_mode = 2
 mouse_filter = 2
 
 [node name="CheckBoxHitbox" type="Control" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.25
+size_flags_stretch_ratio = 0.15
 script = ExtResource("2_rl0ur")
 
 [node name="CheckBox" type="CheckBox" parent="MarginContainer/HBoxContainer/CheckBoxHitbox"]
@@ -97,7 +94,6 @@ wait_time = 0.25
 one_shot = true
 
 [node name="FileDialog" type="FileDialog" parent="."]
-auto_translate_mode = 1
 title = "Open a File"
 initial_position = 2
 size = Vector2i(350, 200)

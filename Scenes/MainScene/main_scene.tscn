@@ -13,25 +13,6 @@
 [sub_resource type="Theme" id="Theme_5w21q"]
 default_font = ExtResource("1_4htwb")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fd1u0"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdyki"]
-bg_color = Color(0.258824, 0.00784314, 0.00784314, 1)
-border_color = Color(0.721569, 0.0666667, 0.0666667, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_38vrh"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vi3yj"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h0iqq"]
 bg_color = Color(0.8, 0.0823529, 0.0823529, 1)
 corner_radius_bottom_right = 8
@@ -51,6 +32,18 @@ corner_radius_bottom_left = 8
 bg_color = Color(0.423529, 0.0235294, 0.0235294, 1)
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdyki"]
+bg_color = Color(0.258824, 0.00784314, 0.00784314, 1)
+border_color = Color(0.721569, 0.0666667, 0.0666667, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_38vrh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vi3yj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pveqh"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -72,6 +65,13 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fd1u0"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1gfv"]
 bg_color = Color(0, 0.503124, 0.217722, 1)
@@ -99,217 +99,7 @@ grow_vertical = 2
 theme = SubResource("Theme_5w21q")
 script = ExtResource("2_7s6wy")
 
-[node name="IWADSelect" type="Panel" parent="."]
-self_modulate = Color(0.721569, 0.0666667, 0.0666667, 1)
-custom_minimum_size = Vector2(300, 50)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -320.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = 70.0
-grow_horizontal = 0
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_fd1u0")
-script = ExtResource("3_jxkho")
-
-[node name="IWADSelectText" type="RichTextLabel" parent="IWADSelect"]
-unique_name_in_owner = true
-modulate = Color(0.973535, 0.973535, 0.973535, 1)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 15.0
-offset_top = -12.0
-offset_right = -61.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 20
-bbcode_enabled = true
-text = "[center]"
-fit_content = true
-scroll_following = true
-autowrap_mode = 1
-
-[node name="FileDialog" type="FileDialog" parent="IWADSelect"]
-title = "Open a File"
-initial_position = 2
-size = Vector2i(350, 200)
-always_on_top = true
-ok_button_text = "Open"
-file_mode = 0
-access = 2
-filters = PackedStringArray("*.iwad,*.wad", "*; All Files")
-use_native_dialog = true
-
-[node name="TextureRect" type="TextureRect" parent="IWADSelect"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -53.0
-offset_top = -20.0
-offset_right = -13.0
-offset_bottom = 20.0
-grow_horizontal = 0
-grow_vertical = 2
-texture = ExtResource("4_djb5r")
-expand_mode = 1
-
-[node name="ExeSelect" type="Panel" parent="."]
-self_modulate = Color(0.721569, 0.0666667, 0.0666667, 1)
-custom_minimum_size = Vector2(300, 50)
-layout_mode = 1
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 320.0
-offset_bottom = 70.0
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_fd1u0")
-script = ExtResource("3_jxkho")
-windows_file_filter = "*.exe; Executable"
-
-[node name="ExeSelectText" type="RichTextLabel" parent="ExeSelect"]
-unique_name_in_owner = true
-modulate = Color(0.973535, 0.973535, 0.973535, 1)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 15.0
-offset_top = -12.0
-offset_right = -61.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 20
-bbcode_enabled = true
-text = "[center]"
-fit_content = true
-scroll_following = true
-autowrap_mode = 1
-
-[node name="FileDialog" type="FileDialog" parent="ExeSelect"]
-title = "Open a File"
-initial_position = 2
-size = Vector2i(350, 200)
-always_on_top = true
-ok_button_text = "Open"
-file_mode = 0
-access = 2
-use_native_dialog = true
-
-[node name="TextureRect" type="TextureRect" parent="ExeSelect"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -53.0
-offset_top = -20.0
-offset_right = -13.0
-offset_bottom = 20.0
-grow_horizontal = 0
-grow_vertical = 2
-texture = ExtResource("4_djb5r")
-expand_mode = 1
-
-[node name="ProfileSelect" type="Panel" parent="."]
-self_modulate = Color(0.721569, 0.0666667, 0.0666667, 1)
-custom_minimum_size = Vector2(300, 50)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -150.0
-offset_top = 20.0
-offset_right = 150.0
-offset_bottom = 70.0
-grow_horizontal = 2
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_fd1u0")
-script = ExtResource("5_jbqkg")
-
-[node name="ExeSelectText" type="RichTextLabel" parent="ProfileSelect"]
-modulate = Color(0.973535, 0.973535, 0.973535, 1)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 15.0
-offset_top = -12.0
-offset_right = -61.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 20
-bbcode_enabled = true
-text = "[center]"
-fit_content = true
-scroll_following = true
-autowrap_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="ProfileSelect"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -53.0
-offset_top = -16.0
-offset_right = -21.0
-offset_bottom = 16.0
-grow_horizontal = 0
-grow_vertical = 2
-texture = ExtResource("5_yykeh")
-expand_mode = 1
-
-[node name="ConsoleCommands" type="Panel" parent="."]
-custom_minimum_size = Vector2(300, 35)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -55.0
-offset_right = 720.0
-offset_bottom = -20.0
-grow_vertical = 0
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_xdyki")
-
-[node name="ConsoleCommandTextEdit" type="TextEdit" parent="ConsoleCommands"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = 1.5
-offset_bottom = -1.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = SubResource("StyleBoxEmpty_38vrh")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_vi3yj")
-placeholder_text = "Write custom commands here..."
-script = ExtResource("7_v2i11")
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ModsMenu" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
 anchors_preset = 15
@@ -322,10 +112,10 @@ grow_vertical = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20
 
-[node name="Control" type="Control" parent="MarginContainer"]
+[node name="Control" type="Control" parent="ModsMenu"]
 layout_mode = 2
 
-[node name="AddModButton" type="Button" parent="MarginContainer/Control"]
+[node name="AddModButton" type="Button" parent="ModsMenu/Control"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 3
@@ -347,7 +137,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_ndhtr")
 text = "+"
 script = ExtResource("3_pdnw3")
 
-[node name="FileDialog" type="FileDialog" parent="MarginContainer/Control/AddModButton"]
+[node name="FileDialog" type="FileDialog" parent="ModsMenu/Control/AddModButton"]
 title = "Open File(s)"
 initial_position = 2
 size = Vector2i(350, 200)
@@ -358,7 +148,7 @@ access = 2
 filters = PackedStringArray("*.wad,*.pk3; Doom Wad")
 use_native_dialog = true
 
-[node name="RemoveModButton" type="Button" parent="MarginContainer/Control"]
+[node name="RemoveModButton" type="Button" parent="ModsMenu/Control"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 3
@@ -381,24 +171,248 @@ action_mode = 0
 text = "-"
 script = ExtResource("4_kahvs")
 
-[node name="PanelBorder" type="PanelContainer" parent="MarginContainer"]
+[node name="ConsoleCommands" type="Panel" parent="ModsMenu/Control"]
+custom_minimum_size = Vector2(300, 35)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = -119.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_xdyki")
+
+[node name="ConsoleCommandTextEdit" type="TextEdit" parent="ModsMenu/Control/ConsoleCommands"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 1.5
+offset_bottom = -1.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_38vrh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vi3yj")
+placeholder_text = "Write custom commands here..."
+script = ExtResource("7_v2i11")
+
+[node name="PanelBorder" type="PanelContainer" parent="ModsMenu"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pveqh")
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelBorder"]
+[node name="PanelContainer" type="PanelContainer" parent="ModsMenu/PanelBorder"]
 clip_children = 2
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_e4rlo")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelBorder/PanelContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="ModsMenu/PanelBorder/PanelContainer"]
 layout_mode = 2
 
-[node name="ModsVBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelBorder/PanelContainer/ScrollContainer"]
+[node name="ModsVBoxContainer" type="VBoxContainer" parent="ModsMenu/PanelBorder/PanelContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
+
+[node name="TopBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="ExeSelect" type="Panel" parent="TopBar"]
+self_modulate = Color(0.721569, 0.0666667, 0.0666667, 1)
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_fd1u0")
+script = ExtResource("3_jxkho")
+windows_file_filter = "*.exe; Executable"
+
+[node name="ExeSelectText" type="RichTextLabel" parent="TopBar/ExeSelect"]
+unique_name_in_owner = true
+modulate = Color(0.973535, 0.973535, 0.973535, 1)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -12.0
+offset_right = -61.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]"
+fit_content = true
+scroll_following = true
+autowrap_mode = 1
+
+[node name="FileDialog" type="FileDialog" parent="TopBar/ExeSelect"]
+title = "Open a File"
+initial_position = 2
+size = Vector2i(350, 200)
+always_on_top = true
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+use_native_dialog = true
+
+[node name="TextureRect" type="TextureRect" parent="TopBar/ExeSelect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -20.0
+offset_right = -13.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("4_djb5r")
+expand_mode = 1
+
+[node name="ProfileSelect" type="Panel" parent="TopBar"]
+self_modulate = Color(0.721569, 0.0666667, 0.0666667, 1)
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_fd1u0")
+script = ExtResource("5_jbqkg")
+
+[node name="SelectedProfileText" type="RichTextLabel" parent="TopBar/ProfileSelect"]
+unique_name_in_owner = true
+modulate = Color(0.973535, 0.973535, 0.973535, 1)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -12.0
+offset_right = -61.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Profile Selected"
+fit_content = true
+scroll_following = true
+autowrap_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="TopBar/ProfileSelect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -16.0
+offset_right = -21.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("5_yykeh")
+expand_mode = 1
+
+[node name="ProfilesContainer" type="PanelContainer" parent="TopBar/ProfileSelect"]
+unique_name_in_owner = true
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 40.0
+offset_right = -10.0
+offset_bottom = 82.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TopBar/ProfileSelect/ProfilesContainer"]
+layout_mode = 2
+
+[node name="IWADSelect" type="Panel" parent="TopBar"]
+self_modulate = Color(0.721569, 0.0666667, 0.0666667, 1)
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_fd1u0")
+script = ExtResource("3_jxkho")
+
+[node name="IWADSelectText" type="RichTextLabel" parent="TopBar/IWADSelect"]
+unique_name_in_owner = true
+modulate = Color(0.973535, 0.973535, 0.973535, 1)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -12.0
+offset_right = -61.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]"
+fit_content = true
+scroll_following = true
+autowrap_mode = 1
+
+[node name="FileDialog" type="FileDialog" parent="TopBar/IWADSelect"]
+title = "Open a File"
+initial_position = 2
+size = Vector2i(350, 200)
+always_on_top = true
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.iwad,*.wad", "*; All Files")
+use_native_dialog = true
+
+[node name="TextureRect" type="TextureRect" parent="TopBar/IWADSelect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -20.0
+offset_right = -13.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("4_djb5r")
+expand_mode = 1
 
 [node name="StartButton" type="Button" parent="."]
 unique_name_in_owner = true
@@ -421,19 +435,19 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_t2ae6")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_wjdc5")
 text = "Start Game"
 
-[connection signal="mouse_entered" from="IWADSelect" to="IWADSelect" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="IWADSelect" to="IWADSelect" method="_on_mouse_exited"]
-[connection signal="file_selected" from="IWADSelect/FileDialog" to="." method="_on_iwad_selected"]
-[connection signal="mouse_entered" from="ExeSelect" to="ExeSelect" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="ExeSelect" to="ExeSelect" method="_on_mouse_exited"]
-[connection signal="file_selected" from="ExeSelect/FileDialog" to="." method="_on_exe_selected"]
-[connection signal="mouse_entered" from="ProfileSelect" to="ProfileSelect" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="ProfileSelect" to="ProfileSelect" method="_on_mouse_exited"]
-[connection signal="focus_entered" from="ConsoleCommands/ConsoleCommandTextEdit" to="ConsoleCommands/ConsoleCommandTextEdit" method="_on_focus_entered"]
-[connection signal="focus_exited" from="ConsoleCommands/ConsoleCommandTextEdit" to="ConsoleCommands/ConsoleCommandTextEdit" method="_on_focus_exited"]
-[connection signal="mouse_entered" from="ConsoleCommands/ConsoleCommandTextEdit" to="ConsoleCommands/ConsoleCommandTextEdit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="ConsoleCommands/ConsoleCommandTextEdit" to="ConsoleCommands/ConsoleCommandTextEdit" method="_on_mouse_exited"]
-[connection signal="pressed" from="MarginContainer/Control/AddModButton" to="MarginContainer/Control/AddModButton" method="_on_pressed"]
-[connection signal="files_selected" from="MarginContainer/Control/AddModButton/FileDialog" to="MarginContainer/Control/AddModButton" method="_on_files_selected"]
-[connection signal="pressed" from="MarginContainer/Control/RemoveModButton" to="MarginContainer/Control/RemoveModButton" method="_on_pressed"]
+[connection signal="pressed" from="ModsMenu/Control/AddModButton" to="ModsMenu/Control/AddModButton" method="_on_pressed"]
+[connection signal="files_selected" from="ModsMenu/Control/AddModButton/FileDialog" to="ModsMenu/Control/AddModButton" method="_on_files_selected"]
+[connection signal="pressed" from="ModsMenu/Control/RemoveModButton" to="ModsMenu/Control/RemoveModButton" method="_on_pressed"]
+[connection signal="focus_entered" from="ModsMenu/Control/ConsoleCommands/ConsoleCommandTextEdit" to="ModsMenu/Control/ConsoleCommands/ConsoleCommandTextEdit" method="_on_focus_entered"]
+[connection signal="focus_exited" from="ModsMenu/Control/ConsoleCommands/ConsoleCommandTextEdit" to="ModsMenu/Control/ConsoleCommands/ConsoleCommandTextEdit" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="ModsMenu/Control/ConsoleCommands/ConsoleCommandTextEdit" to="ModsMenu/Control/ConsoleCommands/ConsoleCommandTextEdit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ModsMenu/Control/ConsoleCommands/ConsoleCommandTextEdit" to="ModsMenu/Control/ConsoleCommands/ConsoleCommandTextEdit" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="TopBar/ExeSelect" to="TopBar/ExeSelect" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TopBar/ExeSelect" to="TopBar/ExeSelect" method="_on_mouse_exited"]
+[connection signal="file_selected" from="TopBar/ExeSelect/FileDialog" to="." method="_on_exe_selected"]
+[connection signal="mouse_entered" from="TopBar/ProfileSelect" to="TopBar/ProfileSelect" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TopBar/ProfileSelect" to="TopBar/ProfileSelect" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="TopBar/IWADSelect" to="TopBar/IWADSelect" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TopBar/IWADSelect" to="TopBar/IWADSelect" method="_on_mouse_exited"]
+[connection signal="file_selected" from="TopBar/IWADSelect/FileDialog" to="." method="_on_iwad_selected"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

@@ -15,6 +15,7 @@ func _ready() -> void:
 
 func flash_panel():
 	var tween: Tween = create_tween()
+	tween.set_parallel(true)
 	tween.set_trans(Tween.TRANS_SINE)
 	
 	var current_color: Color = self_modulate
