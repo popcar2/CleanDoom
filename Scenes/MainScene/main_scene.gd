@@ -24,12 +24,17 @@ func start_game() -> void:
 	
 	argument_strings += ["-iwad", GlobalConfig.default_iwad]
 	
+	# Add mods as -file arguments
 	if %ModsVBoxContainer.get_children().size() > 0:
 		argument_strings.append("-file")
 		for mod_panel: Panel in %ModsVBoxContainer.get_children():
 			if !mod_panel.get_node("%CheckBox").button_pressed:
 				continue
 			argument_strings.append("%s" % mod_panel.get_node("%ModPathText").text)
+	
+	# Add custom console commands
+	if !%ConsoleCommandTextEdit.text.is_empty():
+		argument_strings.append_array(%ConsoleCommandTextEdit.text.split(" "))
 	
 	if run_flatpak:
 		OS.create_process("flatpak", argument_strings)
