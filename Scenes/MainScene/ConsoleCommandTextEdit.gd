@@ -4,6 +4,16 @@ extends TextEdit
 
 var is_mouse_inside: bool
 
+func _ready():
+	# Just removing some useless things from the context menu
+	var menu: PopupMenu = get_menu()
+	
+	menu.remove_item(13)
+	menu.remove_item(12)
+	menu.remove_item(11)
+	menu.remove_item(10)
+	menu.remove_item(9)
+
 func _input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == 1 and event.is_pressed():
 		if is_mouse_inside:
