@@ -130,6 +130,7 @@ func clear_profile():
 
 func delete_profile(profile_name: String):
 	switch_profile("Default")
+	print("Deleting %s" % profile_name)
 	var err: Error = DirAccess.remove_absolute("user://Profiles/%s.json" % profile_name)
 	
 	if err:

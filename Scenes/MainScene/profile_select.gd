@@ -17,7 +17,6 @@ func _ready():
 		
 		if file == "Default.json":
 			profiles_vbox.move_child(new_panel, 0)
-			new_panel.size.x -= new_panel.get_node("%TrashButton").size.x
 			new_panel.get_node("%TrashButton").disabled = true
 	
 	if profiles_container.get_node("VBoxContainer").get_child_count() == 0:
