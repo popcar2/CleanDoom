@@ -6,10 +6,11 @@ func show_window():
 
 func _on_close_requested():
 	hide()
+	%ProfileName.text = ""
 
 func _on_cancel_pressed():
-	hide()
+	_on_close_requested()
 
 func _on_continue_pressed():
 	$"/root/MainScene".create_profile(%ProfileName.text)
-	hide()
+	_on_close_requested()

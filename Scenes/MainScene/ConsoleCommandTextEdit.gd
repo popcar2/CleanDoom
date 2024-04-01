@@ -32,3 +32,9 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	is_mouse_inside = false
+
+
+func _on_text_changed():
+	if text.ends_with("\n"):
+		text = text.trim_suffix("\n")
+		$"../../.."._on_continue_pressed()
