@@ -23,7 +23,6 @@ func _ready():
 		%SelectedProfileText.text = "Default"
 		add_profile_panel("Default")
 	
-	profiles_vbox.add_child(HSeparator.new())
 	profiles_vbox.add_child(load("res://Scenes/NewProfile/new_profile_button.tscn").instantiate())
 
 func _input(event: InputEvent):
@@ -35,12 +34,12 @@ func _input(event: InputEvent):
 
 func _on_mouse_entered() -> void:
 	var tween: Tween = create_tween()
-	tween.tween_property(self, "self_modulate", Color("f3201e"), 0.2)
+	tween.tween_property(self, "self_modulate", GlobalConfig.color_red_selected, 0.2)
 	is_mouse_over = true
 
 func _on_mouse_exited() -> void:
 	var tween: Tween = create_tween()
-	tween.tween_property(self, "self_modulate", Color("b81111"), 0.2)
+	tween.tween_property(self, "self_modulate", GlobalConfig.color_red, 0.2)
 	is_mouse_over = false
 
 func toggle_profiles_container():
@@ -77,4 +76,4 @@ func add_profile_panel(profile_name: String):
 	profiles_vbox.add_child(new_panel)
 	await get_tree().process_frame
 	# Moves this above new profile button and separator
-	profiles_vbox.move_child(new_panel, -3) # TODO make this less hacky lol
+	profiles_vbox.move_child(new_panel, -2) # TODO make this less hacky lol

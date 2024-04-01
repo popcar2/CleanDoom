@@ -19,7 +19,7 @@ func flash_panel():
 	tween.set_trans(Tween.TRANS_SINE)
 	
 	var current_color: Color = self_modulate
-	tween.tween_property(self, "self_modulate", current_color, 0.75).from(Color("ffff00"))
+	tween.tween_property(self, "self_modulate", current_color, 0.75).from(Color("FAA307"))
 
 func _input(event: InputEvent) -> void:
 	# Handle dragging and re-ordering of mods

@@ -102,7 +102,7 @@ theme_override_constants/margin_right = 100
 
 [node name="ExeSelect" type="Panel" parent="ColorRect/VBoxContainer/ExeSelectMargin"]
 unique_name_in_owner = true
-self_modulate = Color(0.721569, 0.0666667, 0.0666667, 1)
+self_modulate = Color(0.615686, 0.00784314, 0.0313726, 1)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_yu1te")
@@ -190,7 +190,7 @@ theme_override_constants/margin_left = 100
 theme_override_constants/margin_right = 100
 
 [node name="IWADSelect" type="Panel" parent="ColorRect/VBoxContainer/IWADSelectMargin"]
-self_modulate = Color(0.721569, 0.0666667, 0.0666667, 1)
+self_modulate = Color(0.615686, 0.00784314, 0.0313726, 1)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_yu1te")

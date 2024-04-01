@@ -6,8 +6,8 @@ func _gui_input(event: InputEvent):
 
 func _on_mouse_entered() -> void:
 	var tween: Tween = create_tween()
-	tween.tween_property(self, "self_modulate", Color("f3201e"), 0.15)
+	tween.tween_property(self, "self_modulate", GlobalConfig.color_red_selected, 0.15)
 
 func _on_mouse_exited() -> void:
 	var tween: Tween = create_tween()
-	tween.tween_property(self, "self_modulate", Color("b81111"), 0.15)
+	tween.tween_property(self, "self_modulate", GlobalConfig.color_red, 0.15)
