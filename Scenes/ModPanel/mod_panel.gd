@@ -71,7 +71,7 @@ func deselect_panel() -> void:
 func _on_mouse_entered() -> void:
 	is_mouse_over = true
 	if self != selected_panel:
-		self_modulate = self_modulate.lightened(0.25)
+		self_modulate = self_modulate.lightened(0.20)
 
 func _on_mouse_exited() -> void:
 	is_mouse_over = false

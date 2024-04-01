@@ -11,6 +11,8 @@ default_font = ExtResource("1_4htwb")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yu1te"]
 bg_color = Color(1, 1, 1, 1)
+border_width_right = 4
+border_width_bottom = 5
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -54,17 +56,7 @@ grow_vertical = 2
 theme = SubResource("Theme_5dw0q")
 script = ExtResource("2_i8sul")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = 95.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.184314, 0.184314, 0.184314, 1)
-
-[node name="Title" type="RichTextLabel" parent="ColorRect"]
+[node name="Title" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -78,7 +70,7 @@ bbcode_enabled = true
 text = "[center][b]Let's get started!"
 fit_content = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -87,20 +79,20 @@ offset_top = 130.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ExeSelectText" type="RichTextLabel" parent="ColorRect/VBoxContainer"]
+[node name="ExeSelectText" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]Select your source port exe"
 fit_content = true
 
-[node name="ExeSelectMargin" type="MarginContainer" parent="ColorRect/VBoxContainer"]
+[node name="ExeSelectMargin" type="MarginContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_right = 100
 
-[node name="ExeSelect" type="Panel" parent="ColorRect/VBoxContainer/ExeSelectMargin"]
+[node name="ExeSelect" type="Panel" parent="VBoxContainer/ExeSelectMargin"]
 unique_name_in_owner = true
 self_modulate = Color(0.615686, 0.00784314, 0.0313726, 1)
 layout_mode = 2
@@ -109,7 +101,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_yu1te")
 script = ExtResource("4_76plu")
 windows_file_filter = "*.exe"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ExeSelectMargin/ExeSelect"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
 layout_mode = 1
 anchors_preset = 14
@@ -128,7 +120,7 @@ fit_content = true
 scroll_following = true
 autowrap_mode = 1
 
-[node name="FileDialog" type="FileDialog" parent="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect"]
+[node name="FileDialog" type="FileDialog" parent="VBoxContainer/ExeSelectMargin/ExeSelect"]
 title = "Open a File"
 initial_position = 2
 size = Vector2i(350, 200)
@@ -139,7 +131,7 @@ access = 2
 filters = PackedStringArray("*; All Files")
 use_native_dialog = true
 
-[node name="TextureRect" type="TextureRect" parent="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ExeSelectMargin/ExeSelect"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -155,7 +147,7 @@ grow_vertical = 2
 texture = ExtResource("5_haktb")
 expand_mode = 1
 
-[node name="FlatpakLocatedText" type="RichTextLabel" parent="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect"]
+[node name="FlatpakLocatedText" type="RichTextLabel" parent="VBoxContainer/ExeSelectMargin/ExeSelect"]
 unique_name_in_owner = true
 visible = false
 modulate = Color(0.964706, 0.964706, 0.215686, 1)
@@ -172,31 +164,31 @@ grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 18
 text = "Flatpak located! No further action needed."
 
-[node name="Padding" type="Control" parent="ColorRect/VBoxContainer"]
+[node name="Padding" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="IWADSelectText" type="RichTextLabel" parent="ColorRect/VBoxContainer"]
+[node name="IWADSelectText" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]Select your IWAD"
 fit_content = true
 
-[node name="IWADSelectMargin" type="MarginContainer" parent="ColorRect/VBoxContainer"]
+[node name="IWADSelectMargin" type="MarginContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_right = 100
 
-[node name="IWADSelect" type="Panel" parent="ColorRect/VBoxContainer/IWADSelectMargin"]
+[node name="IWADSelect" type="Panel" parent="VBoxContainer/IWADSelectMargin"]
 self_modulate = Color(0.615686, 0.00784314, 0.0313726, 1)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_yu1te")
 script = ExtResource("4_76plu")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/IWADSelectMargin/IWADSelect"]
 modulate = Color(0.851769, 0.851769, 0.851769, 1)
 layout_mode = 1
 anchors_preset = 14
@@ -215,7 +207,7 @@ fit_content = true
 scroll_following = true
 autowrap_mode = 1
 
-[node name="FileDialog" type="FileDialog" parent="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect"]
+[node name="FileDialog" type="FileDialog" parent="VBoxContainer/IWADSelectMargin/IWADSelect"]
 title = "Open a File"
 initial_position = 2
 size = Vector2i(350, 200)
@@ -223,10 +215,10 @@ always_on_top = true
 ok_button_text = "Open"
 file_mode = 0
 access = 2
-filters = PackedStringArray("*.iwad,*.wad", "*; All Files")
+filters = PackedStringArray("*.wad,*.pk3,*.ipk3,*.pk7; Doom Wad", "*; All Files")
 use_native_dialog = true
 
-[node name="TextureRect" type="TextureRect" parent="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/IWADSelectMargin/IWADSelect"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -242,16 +234,16 @@ grow_vertical = 2
 texture = ExtResource("5_haktb")
 expand_mode = 1
 
-[node name="Padding2" type="Control" parent="ColorRect/VBoxContainer"]
+[node name="Padding2" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="ContinueMargin" type="MarginContainer" parent="ColorRect/VBoxContainer"]
+[node name="ContinueMargin" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 300
 theme_override_constants/margin_right = 300
 
-[node name="ContinueButton" type="Button" parent="ColorRect/VBoxContainer/ContinueMargin"]
+[node name="ContinueButton" type="Button" parent="VBoxContainer/ContinueMargin"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
@@ -264,12 +256,12 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_tq0ue")
 disabled = true
 text = "Continue"
 
-[connection signal="mouse_entered" from="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect" to="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect" to="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect" method="_on_mouse_exited"]
-[connection signal="file_selected" from="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect/FileDialog" to="." method="_on_exe_file_selected"]
-[connection signal="file_selected" from="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect/FileDialog" to="ColorRect/VBoxContainer/ExeSelectMargin/ExeSelect" method="_on_file_dialog_file_selected"]
-[connection signal="mouse_entered" from="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect" to="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect" to="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect" method="_on_mouse_exited"]
-[connection signal="file_selected" from="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect/FileDialog" to="." method="_on_iwad_file_selected"]
-[connection signal="file_selected" from="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect/FileDialog" to="ColorRect/VBoxContainer/IWADSelectMargin/IWADSelect" method="_on_file_dialog_file_selected"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/ContinueMargin/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/ExeSelectMargin/ExeSelect" to="VBoxContainer/ExeSelectMargin/ExeSelect" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/ExeSelectMargin/ExeSelect" to="VBoxContainer/ExeSelectMargin/ExeSelect" method="_on_mouse_exited"]
+[connection signal="file_selected" from="VBoxContainer/ExeSelectMargin/ExeSelect/FileDialog" to="." method="_on_exe_file_selected"]
+[connection signal="file_selected" from="VBoxContainer/ExeSelectMargin/ExeSelect/FileDialog" to="VBoxContainer/ExeSelectMargin/ExeSelect" method="_on_file_dialog_file_selected"]
+[connection signal="mouse_entered" from="VBoxContainer/IWADSelectMargin/IWADSelect" to="VBoxContainer/IWADSelectMargin/IWADSelect" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/IWADSelectMargin/IWADSelect" to="VBoxContainer/IWADSelectMargin/IWADSelect" method="_on_mouse_exited"]
+[connection signal="file_selected" from="VBoxContainer/IWADSelectMargin/IWADSelect/FileDialog" to="." method="_on_iwad_file_selected"]
+[connection signal="file_selected" from="VBoxContainer/IWADSelectMargin/IWADSelect/FileDialog" to="VBoxContainer/IWADSelectMargin/IWADSelect" method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="VBoxContainer/ContinueMargin/ContinueButton" to="." method="_on_continue_button_pressed"]
