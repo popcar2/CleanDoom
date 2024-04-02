@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://1bheidqt2t0y"]
+[gd_scene load_steps=12 format=3 uid="uid://1bheidqt2t0y"]
 
 [ext_resource type="Script" path="res://Scenes/ProfilePanel/profile_panel.gd" id="1_wokcq"]
 [ext_resource type="Texture2D" uid="uid://duht8dm23rra3" path="res://Art/trash-can.png" id="2_keq8p"]
@@ -11,6 +11,34 @@ bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Theme" id="Theme_x5ffo"]
 default_font = ExtResource("4_avmpy")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2ra7"]
+bg_color = Color(0.564706, 0.00784314, 0.027451, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7b25t"]
+bg_color = Color(0.815686, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jwnkh"]
+bg_color = Color(0.564706, 0.00784314, 0.027451, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mnqhn"]
+bg_color = Color(0.615686, 0.00784314, 0.0313726, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="ProfilePanel" type="Panel"]
 self_modulate = Color(0.615686, 0.00784314, 0.0313726, 1)
@@ -107,12 +135,18 @@ theme_override_constants/separation = 20
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_d2ra7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7b25t")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jwnkh")
 text = "Cancel"
 
 [node name="Delete" type="Button" parent="HBoxContainer/TrashButton/DeleteProfileWindow/Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_mnqhn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7b25t")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jwnkh")
 text = "Delete Profile"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

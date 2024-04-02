@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://can42bi8nub8n"]
+[gd_scene load_steps=12 format=3 uid="uid://can42bi8nub8n"]
 
 [ext_resource type="FontFile" uid="uid://b75tskygvw2u6" path="res://Fonts/Roboto-Regular.ttf" id="1_7ijqi"]
 [ext_resource type="Script" path="res://Scenes/MainScene/ConsoleCommandTextEdit.gd" id="1_gyuah"]
@@ -18,6 +18,34 @@ corner_radius_bottom_left = 6
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wlik5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ca7ck"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s1p6t"]
+bg_color = Color(0.564706, 0.00784314, 0.027451, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_30xy2"]
+bg_color = Color(0.815686, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f18fy"]
+bg_color = Color(0.564706, 0.00784314, 0.027451, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6juy"]
+bg_color = Color(0.615686, 0.00784314, 0.0313726, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="NewProfileWindow" type="Window"]
 title = "New Profile"
@@ -85,12 +113,18 @@ theme_override_constants/separation = 20
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_s1p6t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_30xy2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_f18fy")
 text = "Cancel"
 
 [node name="Continue" type="Button" parent="Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_m6juy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_30xy2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_f18fy")
 text = "Create Profile"
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
