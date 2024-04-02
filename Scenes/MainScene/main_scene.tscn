@@ -113,7 +113,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 150.0
+offset_top = 135.0
 offset_bottom = -150.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -259,9 +259,9 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 20.0
-offset_top = 20.0
+offset_top = 30.0
 offset_right = -20.0
-offset_bottom = 80.0
+offset_bottom = 90.0
 grow_horizontal = 2
 theme_override_constants/separation = 40
 alignment = 1
@@ -275,6 +275,21 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_fd1u0")
 script = ExtResource("3_jxkho")
 windows_file_filter = "*.exe; Executable"
+
+[node name="TitleText" type="RichTextLabel" parent="TopBar/ExeSelect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 15.0
+offset_top = -18.0
+offset_right = -26.0
+offset_bottom = 1.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.74902, 0.74902, 0.74902, 1)
+theme_override_fonts/bold_font = ExtResource("6_ugyx2")
+bbcode_enabled = true
+text = "Source Port"
+fit_content = true
 
 [node name="ExeSelectText" type="RichTextLabel" parent="TopBar/ExeSelect"]
 unique_name_in_owner = true
@@ -327,6 +342,21 @@ expand_mode = 1
 [node name="ProfileSelectMenus" type="Control" parent="TopBar"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="TitleText" type="RichTextLabel" parent="TopBar/ProfileSelectMenus"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 15.0
+offset_top = -18.0
+offset_right = -26.0
+offset_bottom = 1.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.74902, 0.74902, 0.74902, 1)
+theme_override_fonts/bold_font = ExtResource("6_ugyx2")
+bbcode_enabled = true
+text = "Profiles"
+fit_content = true
 
 [node name="ProfilesContainer" type="PanelContainer" parent="TopBar/ProfileSelectMenus"]
 unique_name_in_owner = true
@@ -406,6 +436,21 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_fd1u0")
 script = ExtResource("3_jxkho")
+
+[node name="TitleText" type="RichTextLabel" parent="TopBar/IWADSelect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 15.0
+offset_top = -18.0
+offset_right = -27.0
+offset_bottom = 1.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.74902, 0.74902, 0.74902, 1)
+theme_override_fonts/bold_font = ExtResource("6_ugyx2")
+bbcode_enabled = true
+text = "IWAD"
+fit_content = true
 
 [node name="IWADSelectText" type="RichTextLabel" parent="TopBar/IWADSelect"]
 unique_name_in_owner = true
