@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://1bheidqt2t0y"]
+[gd_scene load_steps=14 format=3 uid="uid://1bheidqt2t0y"]
 
 [ext_resource type="Script" path="res://Scenes/ProfilePanel/profile_panel.gd" id="1_wokcq"]
 [ext_resource type="Texture2D" uid="uid://duht8dm23rra3" path="res://Art/trash-can.png" id="2_keq8p"]
@@ -8,6 +8,12 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oydtk"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ejdsj"]
+bg_color = Color(0.282353, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n8c3v"]
+bg_color = Color(0.815686, 0, 0, 1)
 
 [sub_resource type="Theme" id="Theme_x5ffo"]
 default_font = ExtResource("4_avmpy")
@@ -80,6 +86,8 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ejdsj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n8c3v")
 icon = ExtResource("2_keq8p")
 icon_alignment = 1
 expand_icon = true

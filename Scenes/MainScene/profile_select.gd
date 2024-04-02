@@ -2,6 +2,7 @@ extends Panel
 
 @onready var profiles_container: PanelContainer = %ProfilesContainer
 @onready var profiles_vbox: VBoxContainer = profiles_container.get_node("VBoxContainer")
+@onready var dropdown_icon: TextureRect = $TextureRect
 
 var profile_panel: PackedScene = preload("res://Scenes/ProfilePanel/profile_panel.tscn")
 
@@ -57,6 +58,7 @@ func show_profiles_container():
 	profiles_container.visible = true
 	tween.tween_property(profiles_container, "modulate:a", 1, 0.4)
 	tween.tween_property(profiles_container, "position:y", 57.0, 0.4).from(20.0)
+	tween.tween_property(dropdown_icon, "scale:y", -1, 0.2)
 
 func hide_profiles_container():
 	profiles_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -66,9 +68,11 @@ func hide_profiles_container():
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	
 	tween.tween_property(profiles_container, "modulate:a", 0, 0.2)
+	tween.tween_property(dropdown_icon, "scale:y", 1, 0.2)
 	await tween.tween_property(profiles_container, "position:y", 20.0, 0.2).finished
 	if profiles_container.visible:
 		profiles_container.visible = false
+	
 
 func add_profile_panel(profile_name: String):
 	var new_panel: ProfilePanel = profile_panel.instantiate()
