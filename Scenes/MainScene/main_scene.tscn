@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dvgched8fki6"]
+[gd_scene load_steps=30 format=3 uid="uid://dvgched8fki6"]
 
 [ext_resource type="FontFile" uid="uid://b75tskygvw2u6" path="res://Fonts/Roboto-Regular.ttf" id="1_4htwb"]
 [ext_resource type="Script" path="res://Scenes/MainScene/main_scene.gd" id="2_7s6wy"]
@@ -96,6 +96,18 @@ corner_radius_top_left = 20
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjdc5"]
 bg_color = Color(6.49765e-07, 0.299853, 0.119959, 1)
 corner_radius_top_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7scop"]
+bg_color = Color(0, 0.503124, 0.217722, 1)
+corner_radius_top_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fyd4"]
+bg_color = Color(1.10701e-06, 0.617632, 0.276639, 1)
+corner_radius_top_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vckgf"]
+bg_color = Color(8.18223e-07, 0.470913, 0.2043, 1)
+corner_radius_top_right = 20
 
 [node name="MainScene" type="Control"]
 layout_mode = 3
@@ -239,11 +251,14 @@ mouse_filter = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ModsMenu/PanelBorder/PanelContainer/NoModsTexts"]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-offset_top = 20.0
-offset_bottom = 134.0
+anchor_bottom = 0.5
+offset_top = -49.5
+offset_bottom = 49.5
 grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.74902, 0.74902, 0.74902, 1)
 theme_override_fonts/bold_font = ExtResource("6_ugyx2")
@@ -523,6 +538,41 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_t2ae6")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_wjdc5")
 text = "Start Game"
 
+[node name="SettingsButton" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -75.0
+offset_right = 242.0
+grow_vertical = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_7scop")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0fyd4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vckgf")
+text = "Settings"
+
+[node name="Settings" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 602.0
+offset_bottom = 602.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [connection signal="pressed" from="ModsMenu/Control/AddModButton" to="ModsMenu/Control/AddModButton" method="_on_pressed"]
 [connection signal="files_selected" from="ModsMenu/Control/AddModButton/FileDialog" to="ModsMenu/Control/AddModButton" method="_on_files_selected"]
 [connection signal="pressed" from="ModsMenu/Control/RemoveModButton" to="ModsMenu/Control/RemoveModButton" method="_on_pressed"]
@@ -539,3 +589,4 @@ text = "Start Game"
 [connection signal="mouse_exited" from="TopBar/IWADSelect" to="TopBar/IWADSelect" method="_on_mouse_exited"]
 [connection signal="file_selected" from="TopBar/IWADSelect/FileDialog" to="." method="_on_iwad_selected"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]

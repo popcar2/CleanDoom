@@ -43,6 +43,11 @@ func start_game() -> void:
 	
 	save_profile()
 
+func _on_settings_button_pressed():
+	var tween: Tween = create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "position:y", -get_window().size.y, 0.5)
+
 func save_profile(profile_name_override: String = "") -> void:
 	var profile_name: String
 	if profile_name_override.is_empty():

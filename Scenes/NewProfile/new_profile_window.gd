@@ -12,5 +12,13 @@ func _on_cancel_pressed():
 	_on_close_requested()
 
 func _on_continue_pressed():
-	$"/root/MainScene".create_profile(%ProfileName.text)
+	var text: String = %ProfileName.text
+	if text.is_empty():
+		return
+	
+	# Strip illegal characters
+	for illegal_char: String in "!@#$%^&*/?\\;:()".split(''):
+		text = text.replace(illegal_char, '')
+	
+	$"/root/MainScene".create_profile(text)
 	_on_close_requested()
