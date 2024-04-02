@@ -8,6 +8,8 @@ var color_red_selected: Color = Color("D00000")
 var default_exe: String
 var default_iwad: String
 
+var close_after_starting: bool
+
 var gzdoom_flatpak_exists: bool
 
 func _ready() -> void:

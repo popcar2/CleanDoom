@@ -13,7 +13,8 @@ func _on_start_button_pressed() -> void:
 	await get_tree().create_timer(1).timeout
 	%StartButton.text = "Start Game"
 	launching_game = false
-	#get_tree().quit()
+	if GlobalConfig.close_after_starting:
+		get_tree().quit()
 
 func start_game() -> void:
 	var run_flatpak: bool = GlobalConfig.default_exe == "GZDoom (Flatpak)"
@@ -44,9 +45,13 @@ func start_game() -> void:
 	save_profile()
 
 func _on_settings_button_pressed():
+	if $Settings.visible:
+		return
+	
+	$Settings.visible = true
 	var tween: Tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "position:y", -get_window().size.y, 0.5)
+	tween.tween_property($Settings, "modulate:a", 1, 0.3).from(0.0)
 
 func save_profile(profile_name_override: String = "") -> void:
 	var profile_name: String

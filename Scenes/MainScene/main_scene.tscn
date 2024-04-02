@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dvgched8fki6"]
+[gd_scene load_steps=35 format=3 uid="uid://dvgched8fki6"]
 
 [ext_resource type="FontFile" uid="uid://b75tskygvw2u6" path="res://Fonts/Roboto-Regular.ttf" id="1_4htwb"]
 [ext_resource type="Script" path="res://Scenes/MainScene/main_scene.gd" id="2_7s6wy"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b54x4jpjoyi6r" path="res://Art/dropdown-icon.png" id="5_yykeh"]
 [ext_resource type="FontFile" uid="uid://hi05li2fdpnu" path="res://Fonts/Roboto-Bold.ttf" id="6_ugyx2"]
 [ext_resource type="Script" path="res://Scenes/MainScene/ConsoleCommandTextEdit.gd" id="7_v2i11"]
+[ext_resource type="Script" path="res://Scenes/Settings/Settings.gd" id="11_p0vs3"]
 
 [sub_resource type="Theme" id="Theme_5w21q"]
 default_font = ExtResource("1_4htwb")
@@ -80,6 +81,11 @@ corner_radius_bottom_left = 20
 bg_color = Color(0.215686, 0.0235294, 0, 1)
 corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
+expand_margin_left = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+shadow_color = Color(0, 0, 0, 0.352941)
+shadow_size = 25
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1gfv"]
 bg_color = Color(0, 0.503124, 0.217722, 1)
@@ -108,6 +114,34 @@ corner_radius_top_right = 20
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vckgf"]
 bg_color = Color(8.18223e-07, 0.470913, 0.2043, 1)
 corner_radius_top_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kujp6"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gonwd"]
+bg_color = Color(0.384314, 0.00392157, 0.0117647, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ufwxw"]
+bg_color = Color(0.67451, 0.0117647, 0.0392157, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfwn0"]
+bg_color = Color(0.784314, 0.0156863, 0.054902, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="MainScene" type="Control"]
 layout_mode = 3
@@ -560,10 +594,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 602.0
-offset_bottom = 602.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("11_p0vs3")
 
 [node name="ColorRect" type="ColorRect" parent="Settings"]
 layout_mode = 1
@@ -572,6 +605,119 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 20.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="Panel" parent="Settings/ColorRect/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kujp6")
+
+[node name="TitleText" type="RichTextLabel" parent="Settings/ColorRect/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 48.0
+grow_horizontal = 2
+theme_override_fonts/bold_font = ExtResource("6_ugyx2")
+theme_override_font_sizes/bold_font_size = 64
+bbcode_enabled = true
+text = "[center][b]Settings"
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/ColorRect/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 138.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Close launcher after starting game"
+fit_content = true
+
+[node name="Control" type="Control" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CloseAfterStartButton" type="Button" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.5
+offset_right = 40.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_ugyx2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gonwd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ufwxw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cfwn0")
+toggle_mode = true
+keep_pressed_outside = true
+text = "OFF"
+expand_icon = true
+
+[node name="BackButton" type="Button" parent="Settings"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -75.0
+offset_right = 242.0
+grow_vertical = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_7scop")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0fyd4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vckgf")
+text = "Back"
+
+[node name="Credits" type="RichTextLabel" parent="Settings"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -285.0
+offset_top = -40.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+bbcode_enabled = true
+text = "CleanDoom was created by popcar2"
+fit_content = true
 
 [connection signal="pressed" from="ModsMenu/Control/AddModButton" to="ModsMenu/Control/AddModButton" method="_on_pressed"]
 [connection signal="files_selected" from="ModsMenu/Control/AddModButton/FileDialog" to="ModsMenu/Control/AddModButton" method="_on_files_selected"]
@@ -590,3 +736,5 @@ grow_vertical = 2
 [connection signal="file_selected" from="TopBar/IWADSelect/FileDialog" to="." method="_on_iwad_selected"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="toggled" from="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer/Control/CloseAfterStartButton" to="Settings" method="_on_close_after_start_button_toggled"]
+[connection signal="pressed" from="Settings/BackButton" to="Settings" method="_on_back_button_pressed"]
