@@ -17,6 +17,7 @@ func save_config():
 	var config: ConfigFile = ConfigFile.new()
 	
 	config.set_value("Settings", "close_after_start", %CloseAfterStartButton.button_pressed)
+	config.set_value("Settings", "different_save_dirs", %DifferentSaveDirsButton.button_pressed)
 	
 	var err: Error = config.save("user://settings.cfg")
 	if err != OK:
@@ -31,7 +32,8 @@ func load_config():
 		printerr("Failed to load config file: ", err)
 		return
 	
-	_on_close_after_start_button_toggled(config.get_value("Settings", "close_after_start"))
+	_on_close_after_start_button_toggled(config.get_value("Settings", "close_after_start", false))
+	_on_different_save_dirs_button_toggled(config.get_value("Settings", "different_save_dirs", false))
 
 func _on_back_button_pressed():
 	if modulate.a < 1:
@@ -52,5 +54,17 @@ func _on_close_after_start_button_toggled(toggled_on: bool):
 		GlobalConfig.close_after_starting = false
 		%CloseAfterStartButton.button_pressed = false
 		%CloseAfterStartButton.text = "OFF"
+	
+	save_config()
+
+func _on_different_save_dirs_button_toggled(toggled_on):
+	if toggled_on:
+		GlobalConfig.different_save_dirs = true
+		%DifferentSaveDirsButton.button_pressed = true
+		%DifferentSaveDirsButton.text = "ON"
+	else:
+		GlobalConfig.different_save_dirs = false
+		%DifferentSaveDirsButton.button_pressed = false
+		%DifferentSaveDirsButton.text = "OFF"
 	
 	save_config()

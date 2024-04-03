@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dvgched8fki6"]
+[gd_scene load_steps=36 format=3 uid="uid://dvgched8fki6"]
 
 [ext_resource type="FontFile" uid="uid://b75tskygvw2u6" path="res://Fonts/Roboto-Regular.ttf" id="1_4htwb"]
 [ext_resource type="Script" path="res://Scenes/MainScene/main_scene.gd" id="2_7s6wy"]
@@ -11,6 +11,7 @@
 [ext_resource type="FontFile" uid="uid://hi05li2fdpnu" path="res://Fonts/Roboto-Bold.ttf" id="6_ugyx2"]
 [ext_resource type="Script" path="res://Scenes/MainScene/ConsoleCommandTextEdit.gd" id="7_v2i11"]
 [ext_resource type="Script" path="res://Scenes/Settings/Settings.gd" id="11_p0vs3"]
+[ext_resource type="Script" path="res://Scenes/Misc/show_if_flatpak_detected.gd" id="12_s8ut6"]
 
 [sub_resource type="Theme" id="Theme_5w21q"]
 default_font = ExtResource("1_4htwb")
@@ -308,9 +309,9 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 20.0
-offset_top = 30.0
+offset_top = 35.0
 offset_right = -20.0
-offset_bottom = 90.0
+offset_bottom = 95.0
 grow_horizontal = 2
 theme_override_constants/separation = 40
 alignment = 1
@@ -645,6 +646,7 @@ anchor_bottom = 1.0
 offset_top = 138.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
@@ -655,6 +657,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center]Close launcher after starting game"
@@ -685,6 +688,59 @@ toggle_mode = true
 keep_pressed_outside = true
 text = "OFF"
 expand_icon = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Use different save directory per profile"
+fit_content = true
+
+[node name="Control" type="Control" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DifferentSaveDirsButton" type="Button" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer2/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.5
+offset_right = 40.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_ugyx2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gonwd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ufwxw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cfwn0")
+toggle_mode = true
+keep_pressed_outside = true
+text = "OFF"
+expand_icon = true
+
+[node name="FlatpakSavePSA" type="RichTextLabel" parent="Settings/ColorRect/MarginContainer/Panel"]
+visible = false
+modulate = Color(1, 0.99741, 0.345493, 1)
+layout_mode = 0
+offset_left = 23.0
+offset_top = 237.0
+offset_right = 576.0
+offset_bottom = 277.0
+bbcode_enabled = true
+text = "[center]If you're using Flatpak, please make sure GZDoom has permission to create files at /home/[user]/.local/share/CleanDoom or it won't save!!!"
+script = ExtResource("12_s8ut6")
 
 [node name="BackButton" type="Button" parent="Settings"]
 custom_minimum_size = Vector2(0, 75)
@@ -737,4 +793,5 @@ fit_content = true
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="toggled" from="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer/Control/CloseAfterStartButton" to="Settings" method="_on_close_after_start_button_toggled"]
+[connection signal="toggled" from="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer2/Control/DifferentSaveDirsButton" to="Settings" method="_on_different_save_dirs_button_toggled"]
 [connection signal="pressed" from="Settings/BackButton" to="Settings" method="_on_back_button_pressed"]

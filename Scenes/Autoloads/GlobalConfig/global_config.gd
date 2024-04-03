@@ -9,6 +9,7 @@ var default_exe: String
 var default_iwad: String
 
 var close_after_starting: bool
+var different_save_dirs: bool # Creates and manages new save directories per profile
 
 var gzdoom_flatpak_exists: bool
 
@@ -38,5 +39,4 @@ func _ready() -> void:
 		gzdoom_flatpak_exists = true
 		var output: Array[String] = []
 		OS.execute("flatpak", ["list"], output)
-		print("GZDoom flatpak located")
 		
