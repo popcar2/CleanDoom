@@ -156,6 +156,7 @@ func delete_profile(profile_name: String):
 	
 	# Squish profile container's size back down after deletion of panel
 	await get_tree().process_frame
+	await get_tree().process_frame
 	%ProfilesContainer.size.y = 0 
 
 func _exit_tree() -> void:

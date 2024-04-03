@@ -21,7 +21,7 @@ func _ready():
 			new_panel.get_node("%TrashButton").disabled = true
 	
 	if profiles_container.get_node("VBoxContainer").get_child_count() == 0:
-		%SelectedProfileText.text = "Default"
+		%SelectedProfileText.text = "[center]Default"
 		add_profile_panel("Default")
 	
 	profiles_vbox.add_child(load("res://Scenes/NewProfile/new_profile_button.tscn").instantiate())
@@ -77,6 +77,8 @@ func hide_profiles_container():
 func add_profile_panel(profile_name: String):
 	var new_panel: ProfilePanel = profile_panel.instantiate()
 	new_panel.get_node("%ProfileName").text = "[center]%s" % profile_name
+	if profile_name == "Default":
+		new_panel.get_node("%TrashButton").disabled = true
 	profiles_vbox.add_child(new_panel)
 	await get_tree().process_frame
 	# Moves this above new profile button and separator
