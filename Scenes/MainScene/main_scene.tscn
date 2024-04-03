@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dvgched8fki6"]
+[gd_scene load_steps=41 format=3 uid="uid://dvgched8fki6"]
 
 [ext_resource type="FontFile" uid="uid://b75tskygvw2u6" path="res://Fonts/Roboto-Regular.ttf" id="1_4htwb"]
 [ext_resource type="Script" path="res://Scenes/MainScene/main_scene.gd" id="2_7s6wy"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" path="res://Scenes/MainScene/ConsoleCommandTextEdit.gd" id="7_v2i11"]
 [ext_resource type="Script" path="res://Scenes/Settings/Settings.gd" id="11_p0vs3"]
 [ext_resource type="Script" path="res://Scenes/Misc/show_if_flatpak_detected.gd" id="12_s8ut6"]
+[ext_resource type="Texture2D" uid="uid://dkgocqv70qjfg" path="res://Art/Heart.png" id="13_vvfyf"]
+[ext_resource type="Script" path="res://Scenes/Misc/donate_button.gd" id="14_65s0t"]
 
 [sub_resource type="Theme" id="Theme_5w21q"]
 default_font = ExtResource("1_4htwb")
@@ -143,6 +145,39 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdtxk"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.384314, 0.00392157, 0.0117647, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jx00"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.67451, 0.0117647, 0.0392157, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kk41b"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.784314, 0.0156863, 0.054902, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="MainScene" type="Control"]
 layout_mode = 3
@@ -730,6 +765,25 @@ keep_pressed_outside = true
 text = "OFF"
 expand_icon = true
 
+[node name="OpenSaveDirButton" type="Button" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer2/Control"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 47.0
+offset_right = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_ugyx2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gonwd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ufwxw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cfwn0")
+text = "Open Save Dir"
+expand_icon = true
+
 [node name="FlatpakSavePSA" type="RichTextLabel" parent="Settings/ColorRect/MarginContainer/Panel"]
 visible = false
 modulate = Color(1, 0.99741, 0.345493, 1)
@@ -758,21 +812,44 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_0fyd4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_vckgf")
 text = "Back"
 
-[node name="Credits" type="RichTextLabel" parent="Settings"]
+[node name="DonateButton" type="Button" parent="Settings"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -285.0
-offset_top = -40.0
-offset_right = -20.0
-offset_bottom = -20.0
+offset_left = -250.0
+offset_top = -65.0
+offset_right = -50.0
+offset_bottom = -15.0
 grow_horizontal = 0
 grow_vertical = 0
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_ugyx2")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_vdtxk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8jx00")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kk41b")
+text = "Donate?"
+icon = ExtResource("13_vvfyf")
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("14_65s0t")
+
+[node name="CreditsText" type="RichTextLabel" parent="Settings/DonateButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 bbcode_enabled = true
-text = "CleanDoom was created by popcar2"
+text = "[center]Created by popcar2"
 fit_content = true
 
 [connection signal="pressed" from="ModsMenu/Control/AddModButton" to="ModsMenu/Control/AddModButton" method="_on_pressed"]
@@ -794,4 +871,8 @@ fit_content = true
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="toggled" from="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer/Control/CloseAfterStartButton" to="Settings" method="_on_close_after_start_button_toggled"]
 [connection signal="toggled" from="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer2/Control/DifferentSaveDirsButton" to="Settings" method="_on_different_save_dirs_button_toggled"]
+[connection signal="pressed" from="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer2/Control/OpenSaveDirButton" to="Settings" method="_on_open_save_dir_button_pressed"]
 [connection signal="pressed" from="Settings/BackButton" to="Settings" method="_on_back_button_pressed"]
+[connection signal="mouse_entered" from="Settings/DonateButton" to="Settings/DonateButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Settings/DonateButton" to="Settings/DonateButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="Settings/DonateButton" to="Settings/DonateButton" method="_on_pressed"]

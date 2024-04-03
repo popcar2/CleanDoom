@@ -68,3 +68,10 @@ func _on_different_save_dirs_button_toggled(toggled_on):
 		%DifferentSaveDirsButton.text = "OFF"
 	
 	save_config()
+
+
+func _on_open_save_dir_button_pressed():
+	if !DirAccess.dir_exists_absolute(ProjectSettings.globalize_path("user://Saves")):
+		DirAccess.make_dir_absolute(ProjectSettings.globalize_path("user://Saves"))
+	
+	OS.shell_show_in_file_manager(ProjectSettings.globalize_path("user://Saves"))

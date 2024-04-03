@@ -36,9 +36,9 @@ func start_game() -> void:
 	# Use profile save directories
 	if GlobalConfig.different_save_dirs:
 		var profile_name: String = %SelectedProfileText.text.trim_prefix("[center]")
-		if !DirAccess.dir_exists_absolute("user://saves/%s" % profile_name):
-			DirAccess.make_dir_recursive_absolute("user://saves/%s" % profile_name)
-		argument_strings += ["-savedir", ProjectSettings.globalize_path("user://saves/%s" % profile_name)]
+		if !DirAccess.dir_exists_absolute("user://Saves/%s" % profile_name):
+			DirAccess.make_dir_recursive_absolute("user://Saves/%s" % profile_name)
+		argument_strings += ["-savedir", ProjectSettings.globalize_path("user://Saves/%s" % profile_name)]
 	
 	# Add custom console commands
 	if !%ConsoleCommandTextEdit.text.is_empty():
