@@ -3,8 +3,8 @@
 CleanDoom is a modern, polished mod launcher for classic Doom. It focuses on simplicity and usability.
 
 <p align="center">
-  <img alt="Screenshot of CleanDoom's Intro" src="https://i.imgur.com/ZTiGFEe.png" width="49%">
-  <img alt="Screenshot of CleanDoom's Main Screen" src="https://i.imgur.com/PGN00IW.png" width="49%">
+  <img alt="Screenshot of CleanDoom's Intro" src="https://i.imgur.com/ZTiGFEe.png" width="65%">
+  <img alt="Screenshot of CleanDoom's Main Screen" src="https://i.imgur.com/PGN00IW.png" width="65%">
 </p>
 
 Currently, CleanDoom only focuses on supporting GZDoom (as that's the most popular source port for modding).
