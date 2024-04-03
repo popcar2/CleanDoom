@@ -1,6 +1,7 @@
 extends Control
 
 func _ready():
+	visible = false
 	await get_tree().process_frame
 	
 	var config: ConfigFile = ConfigFile.new()

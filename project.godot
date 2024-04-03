@@ -11,12 +11,14 @@ config_version=5
 [application]
 
 config/name="CleanDoom Mod Launcher"
+config/description="The modern mod launcher for Doom"
 run/main_scene="res://Scenes/MainScene/main_scene.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="CleanDoom"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/low_processor_mode=true
-config/icon="res://icon.svg"
+config/icon="res://Art/CleanDoomIconWIP.png"
+config/windows_native_icon="res://Art/icon.ico"
 
 [autoload]
 
