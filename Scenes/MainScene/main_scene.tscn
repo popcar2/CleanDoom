@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dvgched8fki6"]
+[gd_scene load_steps=43 format=3 uid="uid://dvgched8fki6"]
 
 [ext_resource type="FontFile" uid="uid://b75tskygvw2u6" path="res://Fonts/Roboto-Regular.ttf" id="1_4htwb"]
 [ext_resource type="Script" path="res://Scenes/MainScene/main_scene.gd" id="2_7s6wy"]
@@ -11,7 +11,9 @@
 [ext_resource type="FontFile" uid="uid://hi05li2fdpnu" path="res://Fonts/Roboto-Bold.ttf" id="6_ugyx2"]
 [ext_resource type="Script" path="res://Scenes/MainScene/ConsoleCommandTextEdit.gd" id="7_v2i11"]
 [ext_resource type="Script" path="res://Scenes/Settings/Settings.gd" id="11_p0vs3"]
+[ext_resource type="Theme" uid="uid://dnl67yen3fxii" path="res://Themes/tooltip_theme.tres" id="12_j5hen"]
 [ext_resource type="Script" path="res://Scenes/Misc/show_if_flatpak_detected.gd" id="12_s8ut6"]
+[ext_resource type="Texture2D" uid="uid://dq4x8d6ltfh3l" path="res://Art/tooltip-icon.png" id="13_dames"]
 [ext_resource type="Texture2D" uid="uid://dkgocqv70qjfg" path="res://Art/Heart.png" id="13_vvfyf"]
 [ext_resource type="Script" path="res://Scenes/Misc/donate_button.gd" id="14_65s0t"]
 
@@ -626,7 +628,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_vckgf")
 text = "Settings"
 
 [node name="Settings" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -731,14 +732,37 @@ layout_mode = 2
 alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer2"]
+clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 1.5
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-text = "[center]Use different save directory per profile"
+text = "[center]Automatic save folders per profile"
 fit_content = true
+
+[node name="TooltipTexture" type="TextureRect" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer2/RichTextLabel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 184.0
+offset_top = -21.5
+offset_right = 204.0
+offset_bottom = -1.5
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Automatically creates and uses a different save directory per profile.
+
+Use if you want each profile to have its own save games.
+
+Note: Deleting profiles doesn't delete its saves."
+theme = ExtResource("12_j5hen")
+texture = ExtResource("13_dames")
+expand_mode = 1
 
 [node name="Control" type="Control" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer2"]
 layout_mode = 2

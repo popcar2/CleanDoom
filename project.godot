@@ -17,7 +17,7 @@ config/use_custom_user_dir=true
 config/custom_user_dir_name="CleanDoom"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/low_processor_mode=true
-config/icon="res://Art/CleanDoomIconWIP.png"
+config/icon="res://Art/CleanDoomIcon.png"
 config/windows_native_icon="res://Art/icon.ico"
 
 [autoload]

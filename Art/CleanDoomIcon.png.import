@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsrqiua5ongcx"
-path="res://.godot/imported/CleanDoomIconWIP.png-edd07480b61a31721a23ad443351dc3a.ctex"
+uid="uid://crvn1rioqbx0u"
+path="res://.godot/imported/CleanDoomIcon.png-731f7b035227861f42112151ee5826c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/CleanDoomIconWIP.png"
-dest_files=["res://.godot/imported/CleanDoomIconWIP.png-edd07480b61a31721a23ad443351dc3a.ctex"]
+source_file="res://Art/CleanDoomIcon.png"
+dest_files=["res://.godot/imported/CleanDoomIcon.png-731f7b035227861f42112151ee5826c5.ctex"]
 
 [params]
 
