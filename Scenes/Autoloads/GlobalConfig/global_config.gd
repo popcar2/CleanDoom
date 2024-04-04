@@ -36,7 +36,9 @@ func _ready() -> void:
 	
 	# Check if flatpak GZDoom exists
 	if OS.has_feature("linux"):
-		gzdoom_flatpak_exists = true
 		var output: Array[String] = []
 		OS.execute("flatpak", ["list"], output)
+		if output[0].contains("org.zdoom.GZDoom"):
+			gzdoom_flatpak_exists = true
+			print("Flatpak GZDoom detected")
 		

@@ -67,7 +67,7 @@ func save_profile(profile_name_override: String = "") -> void:
 	else:
 		profile_name = profile_name_override
 	
-	print("Saving %s" % profile_name)
+	#print("Saving %s" % profile_name)
 	
 	var wad_paths: Array[String] = []
 	var wads_enabled: Array[bool] = []
@@ -147,7 +147,7 @@ func clear_profile():
 
 func delete_profile(profile_name: String):
 	switch_profile("Default")
-	print("Deleting %s" % profile_name)
+	#print("Deleting %s" % profile_name)
 	var err: Error = DirAccess.remove_absolute("user://Profiles/%s.json" % profile_name)
 	
 	if err:
