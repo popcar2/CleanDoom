@@ -38,6 +38,10 @@ folder_colors={
 "res://Scenes/": "green"
 }
 
+[gui]
+
+timers/tooltip_delay_sec=0.1
+
 [input]
 
 delete={

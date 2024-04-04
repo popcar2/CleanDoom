@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bah1d3q4pbtie"]
+[gd_scene load_steps=14 format=3 uid="uid://bah1d3q4pbtie"]
 
 [ext_resource type="FontFile" uid="uid://b75tskygvw2u6" path="res://Fonts/Roboto-Regular.ttf" id="1_4htwb"]
 [ext_resource type="FontFile" uid="uid://hi05li2fdpnu" path="res://Fonts/Roboto-Bold.ttf" id="2_5xofk"]
 [ext_resource type="Script" path="res://Scenes/Intro/intro.gd" id="2_i8sul"]
+[ext_resource type="Texture2D" uid="uid://dq4x8d6ltfh3l" path="res://Art/tooltip-icon.png" id="4_6efrf"]
 [ext_resource type="Script" path="res://Scenes/Intro/ExeSelect.gd" id="4_76plu"]
+[ext_resource type="Theme" uid="uid://dnl67yen3fxii" path="res://Themes/tooltip_theme.tres" id="4_sw86n"]
 [ext_resource type="Texture2D" uid="uid://r0m8pq83tjhe" path="res://Art/open-folder.png" id="5_haktb"]
 
 [sub_resource type="Theme" id="Theme_5dw0q"]
@@ -80,11 +82,32 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ExeSelectText" type="RichTextLabel" parent="VBoxContainer"]
+clip_contents = false
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]Select your source port exe"
 fit_content = true
+
+[node name="TooltipTexture" type="TextureRect" parent="VBoxContainer/ExeSelectText"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 194.0
+offset_top = -26.0
+offset_right = 214.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "The source port is the engine that will run the game. 
+
+The most popular source port is GZDoom."
+theme = ExtResource("4_sw86n")
+texture = ExtResource("4_6efrf")
+expand_mode = 1
 
 [node name="ExeSelectMargin" type="MarginContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 70)
@@ -169,11 +192,32 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="IWADSelectText" type="RichTextLabel" parent="VBoxContainer"]
+clip_contents = false
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]Select your IWAD"
 fit_content = true
+
+[node name="TooltipTexture" type="TextureRect" parent="VBoxContainer/IWADSelectText"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 123.0
+offset_top = -26.0
+offset_right = 143.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "An iwad is a file that contains the base game. 
+
+The most popular iwad for modding is Doom 2."
+theme = ExtResource("4_sw86n")
+texture = ExtResource("4_6efrf")
+expand_mode = 1
 
 [node name="IWADSelectMargin" type="MarginContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 70)
