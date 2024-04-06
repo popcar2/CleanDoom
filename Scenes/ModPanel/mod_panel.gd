@@ -12,6 +12,14 @@ var is_grabbed: bool
 
 func _ready() -> void:
 	start_color = self_modulate
+	
+	await get_tree().process_frame
+	
+	# Check if mod actually exists
+	if !FileAccess.file_exists(%ModPathText.text):
+		$MissingWarning.visible = true
+		%ModTitleText.position.x += 15
+		%ModTitleText.size.x -= 15
 
 func flash_panel():
 	var tween: Tween = create_tween()
@@ -87,3 +95,8 @@ func _on_file_dialog_file_selected(path: String) -> void:
 	
 	%ModPathText.text = path
 	%ModTitleText.text = path.get_file().split(".")[0]
+	
+	if %MissingWarning.visible:
+		$MissingWarning.visible = false
+		%ModTitleText.position.x -= 15
+		%ModTitleText.size.x += 15

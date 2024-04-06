@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://can42bi8nub8n"]
 
 [ext_resource type="FontFile" uid="uid://b75tskygvw2u6" path="res://Fonts/Roboto-Regular.ttf" id="1_7ijqi"]
-[ext_resource type="Script" path="res://Scenes/MainScene/ConsoleCommandTextEdit.gd" id="1_gyuah"]
 [ext_resource type="Script" path="res://Scenes/NewProfile/new_profile_window.gd" id="1_slyqa"]
+[ext_resource type="Script" path="res://Scenes/MainScene/ConsoleCommandLineEdit.gd" id="3_2ig8a"]
 
 [sub_resource type="Theme" id="Theme_x5ffo"]
 default_font = ExtResource("1_7ijqi")
@@ -94,7 +94,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_wlik5")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ca7ck")
 placeholder_text = "Profile Name"
 max_length = 30
-script = ExtResource("1_gyuah")
+script = ExtResource("3_2ig8a")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 1

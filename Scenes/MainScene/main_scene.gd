@@ -11,14 +11,19 @@ func _on_start_button_pressed() -> void:
 	if launching_game:
 		return
 	
+	# Check if there are any missing wads
+	for mod_panel: ModPanel in %ModsVBoxContainer.get_children():
+		if mod_panel.get_node("%CheckBox").button_pressed:
+			if mod_panel.get_node("%MissingWarning").visible:
+				%MissingModsPopup.show()
+				return
+	
 	launching_game = true
 	start_game()
 	%StartButton.text = "Have fun!"
 	await get_tree().create_timer(1).timeout
 	%StartButton.text = "Start Game"
 	launching_game = false
-	if GlobalConfig.close_after_starting:
-		get_tree().quit()
 
 func start_game() -> void:
 	var run_flatpak: bool = GlobalConfig.default_exe == "GZDoom (Flatpak)"
@@ -54,6 +59,10 @@ func start_game() -> void:
 		OS.create_process(GlobalConfig.default_exe, argument_strings)
 	
 	save_profile()
+	
+	if GlobalConfig.close_after_starting:
+		await get_tree().create_timer(1).timeout
+		get_tree().quit()
 
 func _on_settings_button_pressed():
 	if $Settings.visible:

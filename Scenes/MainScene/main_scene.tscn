@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dvgched8fki6"]
+[gd_scene load_steps=49 format=3 uid="uid://dvgched8fki6"]
 
 [ext_resource type="FontFile" uid="uid://b75tskygvw2u6" path="res://Fonts/Roboto-Regular.ttf" id="1_4htwb"]
 [ext_resource type="Script" path="res://Scenes/MainScene/main_scene.gd" id="2_7s6wy"]
@@ -9,13 +9,14 @@
 [ext_resource type="Script" path="res://Scenes/MainScene/profile_select.gd" id="5_jbqkg"]
 [ext_resource type="Texture2D" uid="uid://b54x4jpjoyi6r" path="res://Art/dropdown-icon.png" id="5_yykeh"]
 [ext_resource type="FontFile" uid="uid://hi05li2fdpnu" path="res://Fonts/Roboto-Bold.ttf" id="6_ugyx2"]
-[ext_resource type="Script" path="res://Scenes/MainScene/ConsoleCommandTextEdit.gd" id="7_v2i11"]
+[ext_resource type="Script" path="res://Scenes/MainScene/ConsoleCommandLineEdit.gd" id="7_v2i11"]
 [ext_resource type="Script" path="res://Scenes/Settings/Settings.gd" id="11_p0vs3"]
 [ext_resource type="Theme" uid="uid://dnl67yen3fxii" path="res://Themes/tooltip_theme.tres" id="12_j5hen"]
 [ext_resource type="Script" path="res://Scenes/Misc/show_if_flatpak_detected.gd" id="12_s8ut6"]
 [ext_resource type="Texture2D" uid="uid://dq4x8d6ltfh3l" path="res://Art/tooltip-icon.png" id="13_dames"]
 [ext_resource type="Texture2D" uid="uid://dkgocqv70qjfg" path="res://Art/Heart.png" id="13_vvfyf"]
 [ext_resource type="Script" path="res://Scenes/Misc/donate_button.gd" id="14_65s0t"]
+[ext_resource type="Script" path="res://Scenes/MainScene/missing_mods_popup.gd" id="17_76dfd"]
 
 [sub_resource type="Theme" id="Theme_5w21q"]
 default_font = ExtResource("1_4htwb")
@@ -180,6 +181,37 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_tl0mn"]
+default_font = ExtResource("1_4htwb")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5qfo"]
+bg_color = Color(0.564706, 0.00784314, 0.027451, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7m1vi"]
+bg_color = Color(0.815686, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_un2vf"]
+bg_color = Color(0.564706, 0.00784314, 0.027451, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j8t35"]
+bg_color = Color(0.615686, 0.00784314, 0.0313726, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="MainScene" type="Control"]
 layout_mode = 3
@@ -879,6 +911,71 @@ bbcode_enabled = true
 text = "[center]Created by popcar2"
 fit_content = true
 
+[node name="MissingModsPopup" type="Window" parent="."]
+unique_name_in_owner = true
+title = "New Profile"
+initial_position = 1
+size = Vector2i(400, 120)
+visible = false
+transient = true
+unresizable = true
+popup_window = true
+script = ExtResource("17_76dfd")
+
+[node name="Control" type="Control" parent="MissingModsPopup"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_tl0mn")
+
+[node name="MissingModsText" type="RichTextLabel" parent="MissingModsPopup/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 20.0
+offset_bottom = 58.0
+grow_horizontal = 2
+theme_override_fonts/bold_font = ExtResource("6_ugyx2")
+bbcode_enabled = true
+text = "[center]One or more enabled wads are missing!
+Are you sure you want to start the game?"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MissingModsPopup/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -50.0
+offset_right = -25.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="Cancel" type="Button" parent="MissingModsPopup/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_e5qfo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7m1vi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_un2vf")
+text = "Cancel"
+
+[node name="Start" type="Button" parent="MissingModsPopup/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_j8t35")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7m1vi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_un2vf")
+text = "Start Anyways"
+
 [connection signal="pressed" from="ModsMenu/Control/AddModButton" to="ModsMenu/Control/AddModButton" method="_on_pressed"]
 [connection signal="files_selected" from="ModsMenu/Control/AddModButton/FileDialog" to="ModsMenu/Control/AddModButton" method="_on_files_selected"]
 [connection signal="pressed" from="ModsMenu/Control/RemoveModButton" to="ModsMenu/Control/RemoveModButton" method="_on_pressed"]
@@ -904,3 +1001,7 @@ fit_content = true
 [connection signal="mouse_entered" from="Settings/DonateButton" to="Settings/DonateButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Settings/DonateButton" to="Settings/DonateButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="Settings/DonateButton" to="Settings/DonateButton" method="_on_pressed"]
+[connection signal="close_requested" from="MissingModsPopup" to="MissingModsPopup" method="_on_close_requested"]
+[connection signal="pressed" from="MissingModsPopup/Control/HBoxContainer/Cancel" to="MissingModsPopup" method="_on_cancel_pressed"]
+[connection signal="pressed" from="MissingModsPopup/Control/HBoxContainer/Start" to="." method="start_game"]
+[connection signal="pressed" from="MissingModsPopup/Control/HBoxContainer/Start" to="MissingModsPopup" method="_on_start_pressed"]

@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://clnuxvf3lyana"]
+[gd_scene load_steps=6 format=3 uid="uid://clnuxvf3lyana"]
 
 [ext_resource type="Script" path="res://Scenes/ModPanel/mod_panel.gd" id="1_7qdrt"]
 [ext_resource type="Script" path="res://Scenes/ModPanel/CheckBoxHitbox.gd" id="2_rl0ur"]
+[ext_resource type="Texture2D" uid="uid://cv2ui2qqrcq6" path="res://Art/warning.png" id="3_b1t8j"]
+[ext_resource type="Theme" uid="uid://dnl67yen3fxii" path="res://Themes/tooltip_theme.tres" id="3_k0xov"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o12b3"]
 bg_color = Color(1, 1, 1, 1)
@@ -39,6 +41,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.3
 mouse_filter = 2
+bbcode_enabled = true
 text = "Hello"
 autowrap_mode = 0
 
@@ -103,6 +106,29 @@ file_mode = 0
 access = 2
 filters = PackedStringArray("*.wad,*.pk3; Doom Wad", "*; All Files")
 use_native_dialog = true
+
+[node name="MissingWarning" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+texture_filter = 4
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -15.0
+offset_right = 32.0
+offset_bottom = 11.0
+grow_vertical = 2
+tooltip_text = "WARNING: This Wad cannot be found!
+
+Have you deleted it or moved it somewhere else?
+
+Double click this listing to update the path or press the - sign to remove it."
+mouse_filter = 0
+theme = ExtResource("3_k0xov")
+texture = ExtResource("3_b1t8j")
+expand_mode = 1
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
