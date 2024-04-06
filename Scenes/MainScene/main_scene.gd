@@ -45,8 +45,8 @@ func start_game() -> void:
 		argument_strings += ["-savedir", ProjectSettings.globalize_path("user://Saves/%s" % profile_name)]
 	
 	# Add custom console commands
-	if !%ConsoleCommandTextEdit.text.is_empty():
-		argument_strings.append_array(%ConsoleCommandTextEdit.text.split(" "))
+	if !%ConsoleCommandLineEdit.text.is_empty():
+		argument_strings.append_array(%ConsoleCommandLineEdit.text.split(" "))
 	
 	if run_flatpak:
 		OS.create_process("flatpak", argument_strings)
@@ -85,7 +85,7 @@ func save_profile(profile_name_override: String = "") -> void:
 		"default_iwad": GlobalConfig.default_iwad,
 		"wad_paths": wad_paths,
 		"wads_enabled": wads_enabled,
-		"custom_commands": %ConsoleCommandTextEdit.text
+		"custom_commands": %ConsoleCommandLineEdit.text
 	}
 	
 	var save_string: String = JSON.stringify(data)
@@ -120,7 +120,7 @@ func load_profile(profile_name: String = "Default", flash: bool = false) -> void
 	%IWADSelectText.text = "[center]%s" % save_data.default_iwad.get_file()
 	%ExeSelectText.text = "[center]%s" % save_data.default_exe.get_file()
 	%AddModButton._on_files_selected(save_data.wad_paths as PackedStringArray, flash, false)
-	%ConsoleCommandTextEdit.text = save_data.custom_commands
+	%ConsoleCommandLineEdit.text = save_data.custom_commands
 	
 	for mod_panel: ModPanel in %ModsVBoxContainer.get_children():
 		mod_panel.get_node("%CheckBox").button_pressed = save_data.wads_enabled.pop_front()
@@ -138,9 +138,10 @@ func create_profile(profile_name: String):
 	# Check if it already exists
 	for child: Control in %ProfilesContainer.get_node("VBoxContainer").get_children():
 		if child is ProfilePanel:
-			if child.get_node("%ProfileName").text.trim_prefix("[center]") == profile_name:
+			var current_profile_name: String = child.get_node("%ProfileName").text.trim_prefix("[center]")
+			if current_profile_name.to_lower() == profile_name.to_lower():
 				print("Tried creating %s but profile already exists" % profile_name)
-				switch_profile(profile_name)
+				switch_profile(current_profile_name)
 				return
 	
 	save_profile()
@@ -155,7 +156,7 @@ func clear_profile():
 		%ModsVBoxContainer.remove_child(mod_panel)
 		mod_panel.queue_free()
 	
-	%ConsoleCommandTextEdit.text = ""
+	%ConsoleCommandLineEdit.text = ""
 
 func delete_profile(profile_name: String):
 	switch_profile("Default")

@@ -279,15 +279,16 @@ grow_vertical = 0
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_xdyki")
 
-[node name="ConsoleCommandTextEdit" type="TextEdit" parent="ModsMenu/Control/ConsoleCommands"]
+[node name="ConsoleCommandLineEdit" type="LineEdit" parent="ModsMenu/Control/ConsoleCommands"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 5.0
-offset_top = 1.5
-offset_bottom = -1.5
+offset_top = 2.0
+offset_right = -8.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 18
@@ -497,7 +498,6 @@ bbcode_enabled = true
 text = "[center]Profile Selected"
 fit_content = true
 scroll_following = true
-autowrap_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="TopBar/ProfileSelectMenus/ProfileSelect"]
 layout_mode = 1
@@ -668,7 +668,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_kujp6")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 48.0
+offset_top = 25.0
+offset_bottom = 101.0
 grow_horizontal = 2
 theme_override_fonts/bold_font = ExtResource("6_ugyx2")
 theme_override_font_sizes/bold_font_size = 64
@@ -881,10 +882,11 @@ fit_content = true
 [connection signal="pressed" from="ModsMenu/Control/AddModButton" to="ModsMenu/Control/AddModButton" method="_on_pressed"]
 [connection signal="files_selected" from="ModsMenu/Control/AddModButton/FileDialog" to="ModsMenu/Control/AddModButton" method="_on_files_selected"]
 [connection signal="pressed" from="ModsMenu/Control/RemoveModButton" to="ModsMenu/Control/RemoveModButton" method="_on_pressed"]
-[connection signal="focus_entered" from="ModsMenu/Control/ConsoleCommands/ConsoleCommandTextEdit" to="ModsMenu/Control/ConsoleCommands/ConsoleCommandTextEdit" method="_on_focus_entered"]
-[connection signal="focus_exited" from="ModsMenu/Control/ConsoleCommands/ConsoleCommandTextEdit" to="ModsMenu/Control/ConsoleCommands/ConsoleCommandTextEdit" method="_on_focus_exited"]
-[connection signal="mouse_entered" from="ModsMenu/Control/ConsoleCommands/ConsoleCommandTextEdit" to="ModsMenu/Control/ConsoleCommands/ConsoleCommandTextEdit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="ModsMenu/Control/ConsoleCommands/ConsoleCommandTextEdit" to="ModsMenu/Control/ConsoleCommands/ConsoleCommandTextEdit" method="_on_mouse_exited"]
+[connection signal="focus_entered" from="ModsMenu/Control/ConsoleCommands/ConsoleCommandLineEdit" to="ModsMenu/Control/ConsoleCommands/ConsoleCommandLineEdit" method="_on_focus_entered"]
+[connection signal="focus_exited" from="ModsMenu/Control/ConsoleCommands/ConsoleCommandLineEdit" to="ModsMenu/Control/ConsoleCommands/ConsoleCommandLineEdit" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="ModsMenu/Control/ConsoleCommands/ConsoleCommandLineEdit" to="ModsMenu/Control/ConsoleCommands/ConsoleCommandLineEdit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ModsMenu/Control/ConsoleCommands/ConsoleCommandLineEdit" to="ModsMenu/Control/ConsoleCommands/ConsoleCommandLineEdit" method="_on_mouse_exited"]
+[connection signal="text_submitted" from="ModsMenu/Control/ConsoleCommands/ConsoleCommandLineEdit" to="ModsMenu/Control/ConsoleCommands/ConsoleCommandLineEdit" method="_on_text_submitted"]
 [connection signal="mouse_entered" from="TopBar/ExeSelect" to="TopBar/ExeSelect" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="TopBar/ExeSelect" to="TopBar/ExeSelect" method="_on_mouse_exited"]
 [connection signal="file_selected" from="TopBar/ExeSelect/FileDialog" to="." method="_on_exe_selected"]

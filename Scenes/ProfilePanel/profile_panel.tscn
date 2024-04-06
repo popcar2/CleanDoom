@@ -74,11 +74,26 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="ProfileName" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
+[node name="ClippingControl" type="Control" parent="HBoxContainer/VBoxContainer"]
+clip_contents = true
 layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="ProfileName" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/ClippingControl"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -14.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 mouse_filter = 2
+theme_override_constants/line_separation = -5
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "[center]This is a profile right?"

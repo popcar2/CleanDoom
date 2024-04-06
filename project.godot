@@ -12,11 +12,13 @@ config_version=5
 
 config/name="CleanDoom Mod Launcher"
 config/description="The modern mod launcher for Doom"
+config/version="1.0.3"
 run/main_scene="res://Scenes/MainScene/main_scene.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="CleanDoom"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/low_processor_mode=true
+boot_splash/show_image=false
 config/icon="res://Art/CleanDoomIcon.png"
 config/windows_native_icon="res://Art/icon.ico"
 
@@ -35,7 +37,9 @@ window/vsync/vsync_mode=0
 
 folder_colors={
 "res://Art/": "blue",
-"res://Scenes/": "green"
+"res://Fonts/": "purple",
+"res://Scenes/": "green",
+"res://Themes/": "pink"
 }
 
 [gui]
