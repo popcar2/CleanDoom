@@ -135,6 +135,14 @@ func switch_profile(next_profile: String):
 	load_profile(next_profile, true)
 
 func create_profile(profile_name: String):
+	# Check if it already exists
+	for child: Control in %ProfilesContainer.get_node("VBoxContainer").get_children():
+		if child is ProfilePanel:
+			if child.get_node("%ProfileName").text.trim_prefix("[center]") == profile_name:
+				print("Tried creating %s but profile already exists" % profile_name)
+				switch_profile(profile_name)
+				return
+	
 	save_profile()
 	clear_profile()
 	save_profile(profile_name)
