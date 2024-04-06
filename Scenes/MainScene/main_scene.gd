@@ -1,6 +1,10 @@
 extends Control
 class_name MainScene
 
+# Heads up: The code is a little unpolished because I wrote the entire thing in
+# roughly 6 days. In hindsight the code could be split up more and use signals
+# instead of hard referencing everything. Oh well!
+
 var launching_game: bool
 
 func _on_start_button_pressed() -> void:
@@ -157,7 +161,10 @@ func delete_profile(profile_name: String):
 	# Squish profile container's size back down after deletion of panel
 	await get_tree().process_frame
 	await get_tree().process_frame
-	%ProfilesContainer.size.y = 0 
+	%ProfilesContainer.size.y = 0
+	
+	if %ProfilesContainer.get_node("VBoxContainer").get_child_count() <= 10:
+		%ProfileSelect.restore_profile_list_size()
 
 func _exit_tree() -> void:
 	save_profile()

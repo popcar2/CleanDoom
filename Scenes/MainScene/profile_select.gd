@@ -4,7 +4,7 @@ extends Panel
 @onready var profiles_vbox: VBoxContainer = profiles_container.get_node("VBoxContainer")
 @onready var dropdown_icon: TextureRect = $TextureRect
 
-var profile_panel: PackedScene = preload("res://Scenes/ProfilePanel/profile_panel.tscn")
+var profile_panel_scene: PackedScene = preload("res://Scenes/ProfilePanel/profile_panel.tscn")
 
 var is_mouse_over: bool
 
@@ -12,13 +12,7 @@ func _ready():
 	# Read profiles on startup
 	await get_tree().process_frame
 	for file: String in DirAccess.get_files_at("user://Profiles/"):
-		var new_panel: ProfilePanel = profile_panel.instantiate()
-		new_panel.get_node("%ProfileName").text = "[center]%s" % file.trim_suffix(".json")
-		profiles_vbox.add_child(new_panel)
-		
-		if file == "Default.json":
-			profiles_vbox.move_child(new_panel, 0)
-			new_panel.get_node("%TrashButton").disabled = true
+		add_profile_panel(file.trim_suffix(".json"))
 	
 	if profiles_container.get_node("VBoxContainer").get_child_count() == 0:
 		%SelectedProfileText.text = "[center]Default"
@@ -72,10 +66,9 @@ func hide_profiles_container():
 	await tween.tween_property(profiles_container, "position:y", 20.0, 0.2).finished
 	if profiles_container.visible:
 		profiles_container.visible = false
-	
 
 func add_profile_panel(profile_name: String):
-	var new_panel: ProfilePanel = profile_panel.instantiate()
+	var new_panel: ProfilePanel = profile_panel_scene.instantiate()
 	new_panel.get_node("%ProfileName").text = "[center]%s" % profile_name
 	if profile_name == "Default":
 		new_panel.get_node("%TrashButton").disabled = true
@@ -83,3 +76,22 @@ func add_profile_panel(profile_name: String):
 	await get_tree().process_frame
 	# Moves this above new profile button and separator
 	profiles_vbox.move_child(new_panel, -2) # TODO make this less hacky lol
+	
+	if profiles_vbox.get_child_count() > 10:
+		reduce_profile_list_size()
+
+## Reduces the size of profiles when there are too many to stop it from going off-screen
+## In the future I should switch to a scroll container
+func reduce_profile_list_size():
+	profiles_vbox["theme_override_constants/separation"] = 2
+	for profile_panel: Control in profiles_vbox.get_children():
+		if profile_panel is ProfilePanel:
+			profile_panel.custom_minimum_size.y = 25
+			profile_panel.get_node("%ProfileName")["theme_override_font_sizes/normal_font_size"] = 18
+
+func restore_profile_list_size():
+	profiles_vbox["theme_override_constants/separation"] = 4
+	for profile_panel: Control in profiles_vbox.get_children():
+		if profile_panel is ProfilePanel:
+			profile_panel.custom_minimum_size.y = 40
+			profile_panel.get_node("%ProfileName")["theme_override_font_sizes/normal_font_size"] = 20
