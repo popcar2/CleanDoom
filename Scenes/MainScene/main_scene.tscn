@@ -913,7 +913,7 @@ fit_content = true
 
 [node name="MissingModsPopup" type="Window" parent="."]
 unique_name_in_owner = true
-title = "New Profile"
+title = "Missing Wads!"
 initial_position = 1
 size = Vector2i(400, 120)
 visible = false

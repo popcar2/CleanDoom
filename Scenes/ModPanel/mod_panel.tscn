@@ -117,10 +117,10 @@ anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 6.0
 offset_top = -15.0
-offset_right = 32.0
+offset_right = 30.0
 offset_bottom = 11.0
 grow_vertical = 2
-tooltip_text = "WARNING: This Wad cannot be found!
+tooltip_text = "WARNING: This Wad couldn't be found!
 
 Have you deleted it or moved it somewhere else?
 
