@@ -6,13 +6,10 @@ static var selected_panel: ModPanel
 @onready var double_click_timer: Timer = $DoubleClickTimer
 
 var is_mouse_over: bool
-var start_color: Color
 
 var is_grabbed: bool
 
 func _ready() -> void:
-	start_color = self_modulate
-	
 	await get_tree().process_frame
 	
 	# Check if mod actually exists
@@ -69,11 +66,11 @@ func _input(event: InputEvent) -> void:
 			queue_free()
 
 func select_panel() -> void:
-	self_modulate = ThemeManager.panel_selected
+	self_modulate = ThemeManager.panel_highlight
 	selected_panel = self
 
 func deselect_panel() -> void:
-	self_modulate = start_color
+	self_modulate = ThemeManager.panel_light
 	selected_panel = null
 
 func _on_mouse_entered() -> void:
@@ -84,7 +81,7 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	is_mouse_over = false
 	if self != selected_panel:
-		self_modulate = start_color
+		self_modulate = ThemeManager.panel_light
 
 func _on_file_dialog_file_selected(path: String) -> void:
 	# Validate it doesn't already exist
