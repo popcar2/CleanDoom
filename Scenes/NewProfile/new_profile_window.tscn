@@ -8,8 +8,8 @@
 default_font = ExtResource("1_7ijqi")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cf8v5"]
-bg_color = Color(0.215686, 0.0235294, 0, 1)
-border_color = Color(0.615686, 0.00784314, 0.0313726, 1)
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0.619608, 0.619608, 0.619608, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
@@ -65,7 +65,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_x5ffo")
 
-[node name="ProfileNamePanel" type="Panel" parent="Control"]
+[node name="ProfileNamePanel" type="Panel" parent="Control" groups=["color_panel_dark"]]
+self_modulate = Color(0.215686, 0.0235294, 0, 1)
 custom_minimum_size = Vector2(300, 35)
 layout_mode = 1
 anchors_preset = 10
@@ -110,7 +111,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 20
 
-[node name="Cancel" type="Button" parent="Control/HBoxContainer"]
+[node name="Cancel" type="Button" parent="Control/HBoxContainer" groups=["color_button_regular"]]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
@@ -119,7 +120,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_30xy2")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_f18fy")
 text = "Cancel"
 
-[node name="Continue" type="Button" parent="Control/HBoxContainer"]
+[node name="Continue" type="Button" parent="Control/HBoxContainer" groups=["color_button_regular"]]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20

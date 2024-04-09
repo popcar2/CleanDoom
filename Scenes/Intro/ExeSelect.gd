@@ -17,12 +17,12 @@ func _input(event: InputEvent) -> void:
 
 func _on_mouse_entered() -> void:
 	var tween: Tween = create_tween()
-	tween.tween_property(self, "self_modulate", GlobalConfig.color_red_selected, 0.2)
+	tween.tween_property(self, "self_modulate", ThemeManager.panel_highlight, 0.2)
 	is_mouse_inside = true
 
 func _on_mouse_exited() -> void:
 	var tween: Tween = create_tween()
-	tween.tween_property(self, "self_modulate", GlobalConfig.color_red, 0.2)
+	tween.tween_property(self, "self_modulate", ThemeManager.panel_default, 0.2)
 	is_mouse_inside = false
 
 func _on_file_dialog_file_selected(path: String) -> void:

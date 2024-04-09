@@ -2,9 +2,6 @@ extends Node
 
 @onready var main_scene: MainScene
 
-var color_red: Color = Color("9D0208")
-var color_red_selected: Color = Color("D00000")
-
 var default_exe: String
 var default_iwad: String
 

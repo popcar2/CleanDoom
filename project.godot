@@ -25,6 +25,7 @@ config/windows_native_icon="res://Art/icon.ico"
 [autoload]
 
 GlobalConfig="*res://Scenes/Autoloads/GlobalConfig/global_config.tscn"
+ThemeManager="*res://Scenes/Autoloads/ThemeManager/theme_manager.tscn"
 
 [display]
 

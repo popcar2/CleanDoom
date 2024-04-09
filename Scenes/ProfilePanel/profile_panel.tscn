@@ -10,7 +10,7 @@
 bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ejdsj"]
-bg_color = Color(0.282353, 0, 0, 1)
+bg_color = Color(0.215686, 0.0235294, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n8c3v"]
 bg_color = Color(0.815686, 0, 0, 1)
@@ -49,7 +49,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="ProfilePanel" type="Panel"]
+[node name="ProfilePanel" type="Panel" groups=["color_panel_default"]]
 self_modulate = Color(0.615686, 0.00784314, 0.0313726, 1)
 custom_minimum_size = Vector2(0, 40)
 anchors_preset = 10
@@ -99,7 +99,7 @@ bbcode_enabled = true
 text = "[center]This is a profile right?"
 fit_content = true
 
-[node name="TrashButton" type="Button" parent="HBoxContainer"]
+[node name="TrashButton" type="Button" parent="HBoxContainer" groups=["color_button_dark"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
@@ -158,7 +158,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 20
 
-[node name="Cancel" type="Button" parent="HBoxContainer/TrashButton/DeleteProfileWindow/Control/HBoxContainer"]
+[node name="Cancel" type="Button" parent="HBoxContainer/TrashButton/DeleteProfileWindow/Control/HBoxContainer" groups=["color_button_regular"]]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
@@ -167,7 +167,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_7b25t")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_jwnkh")
 text = "Cancel"
 
-[node name="Delete" type="Button" parent="HBoxContainer/TrashButton/DeleteProfileWindow/Control/HBoxContainer"]
+[node name="Delete" type="Button" parent="HBoxContainer/TrashButton/DeleteProfileWindow/Control/HBoxContainer" groups=["color_button_regular"]]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20

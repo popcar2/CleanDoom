@@ -42,7 +42,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdyki"]
-bg_color = Color(0.215686, 0.0235294, 0, 1)
+bg_color = Color(1, 1, 1, 1)
 border_color = Color(0.615686, 0.00784314, 0.0313726, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
@@ -59,7 +59,7 @@ border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.615686, 0.00784314, 0.0313726, 1)
+border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -67,7 +67,7 @@ corner_radius_bottom_left = 20
 corner_detail = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4rlo"]
-bg_color = Color(0.215686, 0.0235294, 0, 1)
+bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -84,7 +84,7 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oiimo"]
-bg_color = Color(0.215686, 0.0235294, 0, 1)
+bg_color = Color(1, 1, 1, 1)
 corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
 expand_margin_left = 3.0
@@ -272,7 +272,7 @@ access = 2
 filters = PackedStringArray("*.wad,*.pk3; Doom Wad")
 use_native_dialog = true
 
-[node name="RemoveModButton" type="Button" parent="ModsMenu/Control"]
+[node name="RemoveModButton" type="Button" parent="ModsMenu/Control" groups=["color_button_regular"]]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 3
@@ -295,7 +295,8 @@ action_mode = 0
 text = "-"
 script = ExtResource("4_kahvs")
 
-[node name="ConsoleCommands" type="Panel" parent="ModsMenu/Control"]
+[node name="ConsoleCommands" type="Panel" parent="ModsMenu/Control" groups=["color_panel_dark"]]
+self_modulate = Color(0.215686, 0.0235294, 0, 1)
 custom_minimum_size = Vector2(300, 35)
 layout_mode = 1
 anchors_preset = 12
@@ -329,11 +330,13 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_vi3yj")
 placeholder_text = "Write custom commands here..."
 script = ExtResource("7_v2i11")
 
-[node name="PanelBorder" type="PanelContainer" parent="ModsMenu"]
+[node name="PanelBorder" type="PanelContainer" parent="ModsMenu" groups=["color_panel_default"]]
+self_modulate = Color(0.615686, 0.00784314, 0.0313726, 1)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pveqh")
 
-[node name="PanelContainer" type="PanelContainer" parent="ModsMenu/PanelBorder"]
+[node name="PanelContainer" type="PanelContainer" parent="ModsMenu/PanelBorder" groups=["color_panel_dark"]]
+self_modulate = Color(0.215686, 0.0235294, 0, 1)
 clip_children = 2
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_e4rlo")
@@ -386,7 +389,7 @@ grow_horizontal = 2
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="ExeSelect" type="Panel" parent="TopBar"]
+[node name="ExeSelect" type="Panel" parent="TopBar" groups=["color_panel_default"]]
 self_modulate = Color(0.615686, 0.00784314, 0.0313726, 1)
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
@@ -478,9 +481,10 @@ bbcode_enabled = true
 text = "Profiles"
 fit_content = true
 
-[node name="ProfilesContainer" type="PanelContainer" parent="TopBar/ProfileSelectMenus"]
+[node name="ProfilesContainer" type="PanelContainer" parent="TopBar/ProfileSelectMenus" groups=["color_panel_dark"]]
 unique_name_in_owner = true
 visible = false
+self_modulate = Color(0.215686, 0.0235294, 0, 1)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -495,7 +499,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_oiimo")
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="ProfileSelect" type="Panel" parent="TopBar/ProfileSelectMenus"]
+[node name="ProfileSelect" type="Panel" parent="TopBar/ProfileSelectMenus" groups=["color_panel_default"]]
 unique_name_in_owner = true
 self_modulate = Color(0.615686, 0.00784314, 0.0313726, 1)
 custom_minimum_size = Vector2(200, 50)
@@ -548,7 +552,7 @@ pivot_offset = Vector2(16, 16)
 texture = ExtResource("5_yykeh")
 expand_mode = 1
 
-[node name="IWADSelect" type="Panel" parent="TopBar"]
+[node name="IWADSelect" type="Panel" parent="TopBar" groups=["color_panel_default"]]
 self_modulate = Color(0.615686, 0.00784314, 0.0313726, 1)
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
@@ -660,7 +664,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_vckgf")
 text = "Settings"
 
 [node name="Settings" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -738,7 +741,7 @@ fit_content = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CloseAfterStartButton" type="Button" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer/Control"]
+[node name="CloseAfterStartButton" type="Button" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer/Control" groups=["color_button_toggle"]]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 13
@@ -871,7 +874,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_0fyd4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_vckgf")
 text = "Back"
 
-[node name="DonateButton" type="Button" parent="Settings"]
+[node name="DonateButton" type="Button" parent="Settings" groups=["color_button_toggle"]]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -958,7 +961,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 20
 
-[node name="Cancel" type="Button" parent="MissingModsPopup/Control/HBoxContainer"]
+[node name="Cancel" type="Button" parent="MissingModsPopup/Control/HBoxContainer" groups=["color_button_regular"]]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
@@ -967,7 +970,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_7m1vi")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_un2vf")
 text = "Cancel"
 
-[node name="Start" type="Button" parent="MissingModsPopup/Control/HBoxContainer"]
+[node name="Start" type="Button" parent="MissingModsPopup/Control/HBoxContainer" groups=["color_button_regular"]]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20

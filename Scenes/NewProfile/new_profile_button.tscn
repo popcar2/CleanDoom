@@ -8,7 +8,7 @@ bg_color = Color(1, 1, 1, 1)
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[node name="Panel" type="Panel"]
+[node name="Panel" type="Panel" groups=["color_panel_default"]]
 self_modulate = Color(0.615686, 0.00784314, 0.0313726, 1)
 custom_minimum_size = Vector2(0, 40)
 anchors_preset = 15
