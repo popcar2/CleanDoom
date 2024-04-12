@@ -68,10 +68,10 @@ corner_detail = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4rlo"]
 bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 corner_detail = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fd1u0"]
@@ -764,7 +764,7 @@ selected = 0
 fit_to_longest_item = false
 popup/item_0/text = "DOOM"
 popup/item_0/id = 0
-popup/item_1/text = "OCEAN"
+popup/item_1/text = "CYAN"
 popup/item_1/id = 1
 popup/item_2/text = "SIMPLE"
 popup/item_2/id = 2
@@ -896,13 +896,17 @@ expand_icon = true
 [node name="FlatpakSavePSA" type="RichTextLabel" parent="Settings/ColorRect/MarginContainer/Panel"]
 visible = false
 modulate = Color(1, 0.99741, 0.345493, 1)
-layout_mode = 0
-offset_left = 23.0
-offset_top = 237.0
-offset_right = 576.0
-offset_bottom = 277.0
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 17.0
+offset_top = 66.0
+offset_right = 570.0
+offset_bottom = 106.0
+grow_vertical = 2
 bbcode_enabled = true
-text = "[center]If you're using Flatpak, please make sure GZDoom has permission to create files at /home/[user]/.local/share/CleanDoom or it won't save!!!"
+text = "[center]If you're using Flatpak, make sure GZDoom has permissions to create files at /home/[user]/.local/share/CleanDoom or it won't save!!!"
 script = ExtResource("12_s8ut6")
 
 [node name="BackButton" type="Button" parent="Settings"]

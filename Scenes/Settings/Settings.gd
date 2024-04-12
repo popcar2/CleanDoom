@@ -80,4 +80,6 @@ func _on_open_save_dir_button_pressed():
 
 func _on_theme_select_item_selected(index: int):
 	if index == 0: # DOOM
-		print("Hi")
+		ThemeManager.set_theme("Doom")
+	elif index == 1: #Cyan
+		ThemeManager.set_theme("Cyan")

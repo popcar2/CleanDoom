@@ -6,3 +6,5 @@ func _ready():
 	await get_tree().process_frame
 	if GlobalConfig.gzdoom_flatpak_exists:
 		visible = true
+	else:
+		visible = false
