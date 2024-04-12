@@ -76,3 +76,8 @@ func _on_open_save_dir_button_pressed():
 		DirAccess.make_dir_absolute(ProjectSettings.globalize_path("user://Saves"))
 	
 	OS.shell_show_in_file_manager(ProjectSettings.globalize_path("user://Saves"))
+
+
+func _on_theme_select_item_selected(index: int):
+	if index == 0: # DOOM
+		print("Hi")

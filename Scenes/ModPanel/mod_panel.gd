@@ -66,7 +66,7 @@ func _input(event: InputEvent) -> void:
 			queue_free()
 
 func select_panel() -> void:
-	self_modulate = ThemeManager.panel_highlight
+	self_modulate = ThemeManager.panel_selected
 	selected_panel = self
 
 func deselect_panel() -> void:

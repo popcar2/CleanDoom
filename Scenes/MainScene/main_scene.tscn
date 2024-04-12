@@ -722,12 +722,59 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer"]
+[node name="ThemeContainer" type="HBoxContainer" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/ThemeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Color Theme"
+fit_content = true
+
+[node name="Control" type="Control" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/ThemeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ThemeSelect" type="OptionButton" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/ThemeContainer/Control" groups=["color_button_toggle"]]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.5
+offset_right = 40.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_ugyx2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gonwd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ufwxw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cfwn0")
+alignment = 1
+expand_icon = true
+item_count = 3
+selected = 0
+fit_to_longest_item = false
+popup/item_0/text = "DOOM"
+popup/item_0/id = 0
+popup/item_1/text = "OCEAN"
+popup/item_1/id = 1
+popup/item_2/text = "SIMPLE"
+popup/item_2/id = 2
+
+[node name="CloseAfterStartContainer" type="HBoxContainer" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/CloseAfterStartContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -737,11 +784,11 @@ bbcode_enabled = true
 text = "[center]Close launcher after starting game"
 fit_content = true
 
-[node name="Control" type="Control" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/CloseAfterStartContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CloseAfterStartButton" type="Button" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer/Control" groups=["color_button_toggle"]]
+[node name="CloseAfterStartButton" type="Button" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/CloseAfterStartContainer/Control" groups=["color_button_toggle"]]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 13
@@ -763,12 +810,12 @@ keep_pressed_outside = true
 text = "OFF"
 expand_icon = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer"]
+[node name="AutomaticSaveContainer" type="HBoxContainer" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/AutomaticSaveContainer"]
 clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
@@ -779,7 +826,7 @@ bbcode_enabled = true
 text = "[center]Automatic save folders per profile"
 fit_content = true
 
-[node name="TooltipTexture" type="TextureRect" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer2/RichTextLabel"]
+[node name="TooltipTexture" type="TextureRect" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/AutomaticSaveContainer/RichTextLabel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -801,11 +848,11 @@ theme = ExtResource("12_j5hen")
 texture = ExtResource("13_dames")
 expand_mode = 1
 
-[node name="Control" type="Control" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer2"]
+[node name="Control" type="Control" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/AutomaticSaveContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DifferentSaveDirsButton" type="Button" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer2/Control"]
+[node name="DifferentSaveDirsButton" type="Button" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/AutomaticSaveContainer/Control"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 13
@@ -827,7 +874,7 @@ keep_pressed_outside = true
 text = "OFF"
 expand_icon = true
 
-[node name="OpenSaveDirButton" type="Button" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer2/Control"]
+[node name="OpenSaveDirButton" type="Button" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/AutomaticSaveContainer/Control"]
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
@@ -997,9 +1044,10 @@ text = "Start Anyways"
 [connection signal="file_selected" from="TopBar/IWADSelect/FileDialog" to="." method="_on_iwad_selected"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="toggled" from="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer/Control/CloseAfterStartButton" to="Settings" method="_on_close_after_start_button_toggled"]
-[connection signal="toggled" from="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer2/Control/DifferentSaveDirsButton" to="Settings" method="_on_different_save_dirs_button_toggled"]
-[connection signal="pressed" from="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/HBoxContainer2/Control/OpenSaveDirButton" to="Settings" method="_on_open_save_dir_button_pressed"]
+[connection signal="item_selected" from="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/ThemeContainer/Control/ThemeSelect" to="Settings" method="_on_theme_select_item_selected"]
+[connection signal="toggled" from="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/CloseAfterStartContainer/Control/CloseAfterStartButton" to="Settings" method="_on_close_after_start_button_toggled"]
+[connection signal="toggled" from="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/AutomaticSaveContainer/Control/DifferentSaveDirsButton" to="Settings" method="_on_different_save_dirs_button_toggled"]
+[connection signal="pressed" from="Settings/ColorRect/MarginContainer/Panel/VBoxContainer/AutomaticSaveContainer/Control/OpenSaveDirButton" to="Settings" method="_on_open_save_dir_button_pressed"]
 [connection signal="pressed" from="Settings/BackButton" to="Settings" method="_on_back_button_pressed"]
 [connection signal="mouse_entered" from="Settings/DonateButton" to="Settings/DonateButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Settings/DonateButton" to="Settings/DonateButton" method="_on_mouse_exited"]
