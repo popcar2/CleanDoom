@@ -168,7 +168,8 @@ func clear_profile():
 	%ConsoleCommandLineEdit.text = ""
 
 func delete_profile(profile_name: String):
-	switch_profile("Default")
+	if %SelectedProfileText.text == "[center]%s" % profile_name:
+		switch_profile("Default")
 	#print("Deleting %s" % profile_name)
 	var err: Error = DirAccess.remove_absolute("user://Profiles/%s.json" % profile_name)
 	
