@@ -19,6 +19,7 @@ func save_config():
 	
 	config.set_value("Settings", "close_after_start", %CloseAfterStartButton.button_pressed)
 	config.set_value("Settings", "different_save_dirs", %DifferentSaveDirsButton.button_pressed)
+	config.set_value("Settings", "theme_index", %ThemeSelect.selected)
 	
 	var err: Error = config.save("user://settings.cfg")
 	if err != OK:
@@ -35,6 +36,8 @@ func load_config():
 	
 	_on_close_after_start_button_toggled(config.get_value("Settings", "close_after_start", false))
 	_on_different_save_dirs_button_toggled(config.get_value("Settings", "different_save_dirs", false))
+	
+	%ThemeSelect.selected = config.get_value("Settings", "theme_index", 0)
 
 func _on_back_button_pressed():
 	if modulate.a < 1:
@@ -85,4 +88,7 @@ func _on_theme_select_item_selected(index: int):
 		ThemeManager.set_theme("Cyan")
 	elif index == 2: #Purple
 		ThemeManager.set_theme("Purple")
-	elif index == 3: ThemeManager.set_theme("Simple")
+	elif index == 3:
+		ThemeManager.set_theme("Simple")
+	
+	save_config()
