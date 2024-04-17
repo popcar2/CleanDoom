@@ -10,7 +10,7 @@ func _on_pressed() -> void:
 
 func _on_files_selected(paths: PackedStringArray, flash: bool = true, save: bool = true) -> void:
 	for path: String in paths:
-		if path.get_extension().to_lower() != "wad" and path.get_extension().to_lower() != "pk3":
+		if path.get_extension().to_lower() != "wad" and path.get_extension().to_lower() != "pk3" and path.get_extension().to_lower() != "pk7":
 			continue
 		if is_duplicate_file(path):
 			continue

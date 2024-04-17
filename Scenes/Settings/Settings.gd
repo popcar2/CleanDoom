@@ -83,3 +83,6 @@ func _on_theme_select_item_selected(index: int):
 		ThemeManager.set_theme("Doom")
 	elif index == 1: #Cyan
 		ThemeManager.set_theme("Cyan")
+	elif index == 2: #Purple
+		ThemeManager.set_theme("Purple")
+	elif index == 3: ThemeManager.set_theme("Simple")

@@ -116,6 +116,20 @@ func set_theme(theme_name: String):
 		panel_highlight = Color("008c8c")
 		panel_selected = Color("0059b3")
 		panel_flash = Color("00e6ac")
+	elif theme_name == "Purple":
+		panel_light = Color("6834b2")
+		panel_default = Color("51288a")
+		panel_dark = Color("23113b")
+		panel_highlight = Color("7339c6")
+		panel_selected = Color("008b8b")
+		panel_flash = Color("cb61ff")
+	elif theme_name == "Simple":
+		panel_light = Color("405672")
+		panel_default = Color("2e3d52")
+		panel_dark = Color("0d1117")
+		panel_highlight = Color("496283")
+		panel_selected = Color("008b8b")
+		panel_flash = Color("7092c2")
 	
 	save_theme()
 

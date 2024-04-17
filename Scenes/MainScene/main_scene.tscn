@@ -269,7 +269,7 @@ always_on_top = true
 ok_button_text = "Open"
 file_mode = 1
 access = 2
-filters = PackedStringArray("*.wad,*.pk3; Doom Wad")
+filters = PackedStringArray("*.wad,*.pk3,*.pk7; Doom Wad")
 use_native_dialog = true
 
 [node name="RemoveModButton" type="Button" parent="ModsMenu/Control" groups=["color_button_regular"]]
@@ -664,7 +664,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_vckgf")
 text = "Settings"
 
 [node name="Settings" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -760,15 +759,17 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ufwxw")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_cfwn0")
 alignment = 1
 expand_icon = true
-item_count = 3
+item_count = 4
 selected = 0
 fit_to_longest_item = false
 popup/item_0/text = "DOOM"
 popup/item_0/id = 0
 popup/item_1/text = "CYAN"
 popup/item_1/id = 1
-popup/item_2/text = "SIMPLE"
+popup/item_2/text = "PURPLE"
 popup/item_2/id = 2
+popup/item_3/text = "SIMPLE"
+popup/item_3/id = 3
 
 [node name="CloseAfterStartContainer" type="HBoxContainer" parent="Settings/ColorRect/MarginContainer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
